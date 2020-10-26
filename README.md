@@ -1,4 +1,4 @@
-# *Pizza Parlor*
+# *[NAME OF PROJECT]*
 
 #### *[NAME OF PROJECT], [XX/XX/XXXX]*
 
