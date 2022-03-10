@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-// import './js/pokemon.js';
+import Pokemon from './js/pokemon';
 import PokemonService from './js/pokemon-service';
 
 function getElements(response) {
@@ -19,7 +19,14 @@ async function makePokemonCall(name) {
 	getElements(response);
 }
 
+async function newPokemonCreate(name) {
+  const response = await PokemonService.getPokemon(name);
+  let pokemon = new Pokemon(response);
+  getElements(pokemon);
+}
+
 $(document).ready(function () {
   makePokedexCall(2); // TODO:  Use configurable region
 	makePokemonCall("bulbasaur");
+  newPokemonCreate("bulbasaur");
 });
