@@ -12,7 +12,7 @@ Minimum requirements:
 * Battle system - moves, stats, weaknesses, status effects, etc. - Chris, Tristen
 * Battle system - switching pokemon, events (death, victory, player vs AI) - Chris, Tristen
 * Front end for buttons and showing images, etc. (handle front-back connections) - Lucian
-* Store caught pokemon with cookies (info) - Geoff
+* Store caught pokemon with cookies ([info](https://www.w3schools.com/js/js_cookies.asp)) - Geoff
 * Front end for battles (using battle sprites and backgrounds) - Geoff, Lucian
 * Levels for evolutions (x^3) - Chris
 
@@ -63,4 +63,3 @@ api/v2/pokedex/2  =>  pokedex entries for the kanto region and games that were t
 
 Copyright (c) 2022
 This software is licensed under the MIT license.
-[cookies](https://www.w3schools.com/js/js_cookies.asp)
