@@ -12,6 +12,12 @@ export default class PokemonService {
     }
   }
 
+  static async randomPokemon(region) {
+    const testService = await this.getPokedex(region);
+    const randomNumber = Math.floor(Math.random() * (testService["pokemon_entries"].length));
+    return (testService["pokemon_entries"][randomNumber]["pokemon_species"]["name"]);
+  }
+
   static async getPokemon(name) {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
