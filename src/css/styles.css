@@ -65,7 +65,7 @@ body {
    column-gap: 3px;
  }
  
- #enemy-sprite{
+ #enemy-box{
   grid-row-start: 1;
   grid-column-start: 2;
   width: auto;
@@ -73,6 +73,9 @@ body {
   background-color: brown;
   border-radius: 4px;
  }
+ 
+ /* #enemy-sprite {
+ } */
  
  #enemy-hp{
   grid-row-start: 1;
