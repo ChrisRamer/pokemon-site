@@ -1,19 +1,27 @@
 export default class Pokemon {
-  constructor(bigPokemon) {
+  constructor(bigPokemon, startingLevel) {
     this.name = bigPokemon.name;
-    this.level = 1;
+    this.level = 0;
     this.experience = 0;
     this.experienceBase = bigPokemon["base_experience"];
     this.type = [];
     this.spriteFront = bigPokemon.sprites["back_default"];
     this.spriteBack = bigPokemon.sprites["front_default"];
-    this.maxStats = {
+    this.baseStats = {
       hp: bigPokemon.stats[0]["base_stat"],
       attack: bigPokemon.stats[1]["base_stat"],
       defense: bigPokemon.stats[2]["base_stat"],
       specialAttack: bigPokemon.stats[3]["base_stat"],
       specialDefence: bigPokemon.stats[4]["base_stat"],
       speed: bigPokemon.stats[5]["base_stat"],
+    };
+    this.maxStats = {
+      hp: 0,
+      attack: 0,
+      defense: 0,
+      specialAttack: 0,
+      specialDefence: 0,
+      speed: 0,
     };
     this.currentStats = this.maxStats;
     this.moves = [null, null, null, null];
@@ -25,9 +33,20 @@ export default class Pokemon {
     bigPokemon.moves.forEach((moveObject) => {
       this.movesPossible.push(moveObject.move.name);
     });
+    this.levelSet(startingLevel);
   }
 
-
+  levelSet(newLevel) {
+    this.level = newLevel;
+    this.maxStats = {
+      hp: Math.ceil(((this.baseStats.hp * 2 * this.level) / 100) + this.level + 10),
+      attack: Math.ceil(((this.baseStats.attack * 2 * this.level) / 100) + 5),
+      defense: Math.ceil(((this.baseStats.defense * 2 * this.level) / 100) + 5),
+      specialAttack: Math.ceil(((this.baseStats.specialAttack * 2 * this.level) / 100) + 5),
+      specialDefence: Math.ceil(((this.baseStats.specialDefence * 2 * this.level) / 100) + 5),
+      speed: Math.ceil(((this.baseStats.speed * 2 * this.level) / 100) + 5)
+    };
+  }
 }
 
 
