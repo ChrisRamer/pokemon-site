@@ -1,57 +1,67 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-	<title>Pokemon Site</title>
-</head>
-<body>
-	<h1>Pokemon Site</h1>
-	<p>Welcome to the world of Pokemon! Battle and catch Pokemon to your hearts delight!</p>
-	<br>
-	<div id='battle-arena'>
-		<!-- //sprites will go here// -->
-	</div>
-	<br>
-	<br>
-	<div id="battle-menu">
-		<p id='turn-summery'></p>
-		<br>
-		<button id='move1' value='move1'>Move 1</button>
-		<button id='move2' value='move2'>Move 2</button>
-		<button id='move3' value='move3'>Move 3</button>
-		<button id='move4' value='move4'>Move 4</button>
-		<button id='party' value='party'>Pokemon Party</button>
-	</div>
-</body>
-</html>
 
-<!-- <div id="battle-screen">
-	<div class="row" id="top">
-		<div class ="col-md-6" id="left-top">
-			enemy health area and remainder pokemon
-		<div>
-		
-		<div class ="col-md-6" id="right-top">
-			enemy sprite area
-		<div>
-	</div>
-	
-	<div class="row" id= "mid">
-		<div class ="col-md-6" id="left-mid">
-			user pokemon sprite
-		<div>
-		
-		<div class ="col-md-6" id="right-mid">
-			user health and remaining pokemon
-		<div>
-	</div>
-	
-	<div class="row" id="bottom">
-		<div class ="col-md-6" id="left-bottom">
-			text area what will charmander do ect
-		<div>
-		
-		<div class ="col-md-6" id="right-bottom">
-			battle menu, switch, run ect
-		<div>
-	</div>
-</div> -->
+<head>
+  <title>Pokemon Site</title>
+</head>
+
+<body>
+  <div id="main-css-container">
+
+    <div id="header-area">
+      <h1>Pokemon Game</h1>
+      <p>Fight and catch pokemon!</p>
+    </div>
+
+    <div id="game-ui">
+      <div id="main-battle-screen">
+
+        <div id="upper-screen">
+
+          <div id="enemy-sprite">
+            <p>Enemy sprite area</p>
+          </div>
+
+          <div id="enemy-hp">
+            <p>Enemy hp area</p>
+          </div>
+
+          <div id="player-sprite">
+            <p>Player sprite area</p>
+          </div>
+
+          <div id="player-hp">
+            <p>Player hp area</p>
+          </div>
+        </div>
+
+        <div id="lower-screen">
+          <div id="battle-option-box">
+            <div id="fight" class="battle-buttons">
+              <p class="grow hover">Fight</p>
+            </div>
+            <div id="run" class="battle-buttons">
+              <p class="grow hover">Run</p>
+            </div>
+            <div id="pokemon" class="battle-buttons">
+              <p class="grow hover">Pokemon</p>
+            </div>
+            <div id="items" class="battle-buttons">
+              <p class="grow hover">Items</p>
+            </div>
+          </div>
+
+          <div id="battle-text-box">
+            <p>Pikachu does something ...</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div id="footer">
+      <h2>footer</h2>
+    </div>
+  </div>
+</body>
+
+</html>

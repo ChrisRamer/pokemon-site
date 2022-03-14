@@ -1,55 +1,178 @@
 body {
-	background-color: rgb(36, 36, 36);
-	color: rgb(184, 184, 184);
-	text-align: center;
-	margin-top: 25px;
-	margin-bottom: 25px;
+	background-color: rgb(97, 147, 255);
 }
 
-#center-align {
-	max-width: 1000px;
-	margin: auto;
+#main-css-container {
+  position: absolute;
+  height: 100%;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+  justify-self: center;
+  text-align: center;
 }
 
-.form-control {
-	background-color: rgb(51, 51, 51);
-	color: rgb(223, 223, 223);
-	margin-bottom: 10px;
-	border: 2px solid rgb(70, 70, 70);
-	border-radius: 25px;
+#header-area{
+  text-align: center;
+  color: rgb(0, 0, 0);
+  grid-row-start: 1;
 }
 
-.btn {
-	background-color: rgb(91, 248, 99);
-	color: rgb(36, 36, 36);
-	border: 2px solid rgb(70, 70, 70);
-	border-radius: 25px;
+
+#footer {
+  grid-row-start: 3;
+  padding: auto;
 }
 
-#output {
-	display: none;
-	color: rgb(66, 177, 71);
-	font-family: Verdana;
+
+ #game-ui {
+    grid-row-start: 2;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(90, 84, 84);
+    width: 700px;
+    height: 500px;
+    border: 10px rgb(255, 87, 75);
+    border-radius: 5px;
+    border-style: solid;
+    outline: 10px black;
+    outline-style: solid;  
+    
 }
 
-input[type="checkbox"] {
-	margin-right: 10px;
+#main-battle-screen {
+  background-color: rgb(90, 84, 84);
+  width: 670px;
+  height: 470px;
+  border-radius: 6px;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-row-gap: 5px;
+ }
+ 
+ #upper-screen {
+   background-color: white;
+   border-radius: 4px;
+   grid-row-start:1 ;
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+   grid-template-columns: 1fr 1fr;
+   width: auto;
+   height: auto;
+   column-gap: 3px;
+ }
+ 
+ #enemy-sprite{
+  grid-row-start: 1;
+  grid-column-start: 2;
+  width: auto;
+  height: auto;
+  background-color: brown;
+  border-radius: 4px;
+ }
+ 
+ #enemy-hp{
+  grid-row-start: 1;
+  grid-column-start: 1;
+  width: auto;
+  height: auto;
+  background-color: rgb(42, 165, 93);
+  border-radius: 4px;
+ }
+ 
+ #player-sprite{
+  grid-row-start: 2;
+  grid-column-start: 1;
+  width: auto;
+  height: auto;
+  background-color: rgb(130, 42, 165);
+  border-radius: 4px;
+ }
+ 
+ #player-hp{
+  grid-row-start: 2;
+  grid-column-start: 2;
+  width: auto;
+  height: auto;
+  background-color: rgb(91, 130, 175);
+  border-radius: 4px;
+ }
+ 
+ #lower-screen {
+  background-color: rgb(14, 185, 171);
+  border-radius: 4px;
+  grid-row-start:2 ;
+  width: auto;
+  height: auto;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 3px;
 }
-
-button[type="submit"] {
-	background-color: rgb(71, 255, 102);
-	color: rgb(0, 0, 0);
-	border: 2px solid rgb(3, 145, 27);
-	border-radius: 10px;
-	font-weight: bold;
-}
-
-.redButton {
-	background-color: rgb(187, 46, 46);
-	color: rgb(0, 0, 0);
-	border: 2px solid rgb(133, 43, 43);
-	border-radius: 10px;
-	font-weight: bold;
-}
-
-/* End of base css */
+ 
+ #battle-text-box{
+  grid-row-start: 1;
+  grid-column-start: 1;
+  width: auto;
+  height: auto;
+  background-color: rgb(235, 49, 188);
+  border-radius: 4px;
+ }
+ 
+ #battle-option-box{
+  grid-row-start: 1;
+  grid-column-start: 2;
+  width: auto;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3px;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ .grow { 
+  transition: all .2s ease-in-out; 
+  }
+  
+  .grow:hover { 
+  transform: scale(1.3); 
+  }
+  
+  .battle-buttons {
+    width: auto;
+    height: auto;
+    border: 3px black;
+    border-radius: 2px;
+    border-style: solid;
+  }
+  
+ #fight{
+  background-color: white;
+  grid-row-start: 1;
+  grid-column-start: 1;
+ }
+ 
+ #pokemon{
+  background-color: white;
+  grid-row-start: 1;
+  grid-column-start: 2;
+ }
+ 
+ #items{
+  background-color: white;
+  grid-row-start: 2;
+  grid-column-start: 1;
+ }
+ 
+ #run{
+  background-color: white;
+  grid-row-start: 2;
+  grid-column-start: 2;
+ }
