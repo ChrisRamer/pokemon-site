@@ -58,7 +58,7 @@ export default class Pokemon {
 //   type: ["grass", "poison"],
 //   spriteFront: "<string link>",
 //   spriteBack: "<string link>",
-//   maxStats: {
+//   baseStats:{
 //     hp: 45,
 //     attack: 49,
 //     defense: 49,
@@ -66,13 +66,21 @@ export default class Pokemon {
 //     specialDefense: 65,
 //     speed: 45
 //   },
+//   maxStats: {
+//     hp: 12,
+//     attack: 6,
+//     defense: 6,
+//     specialAttack: 12,
+//     specialDefense: 12,
+//     speed: 6
+//   },
 //   currentStats: {
-//     hp: 45,
-//     attack: 49,
-//     defense: 49,
-//     specialAttack: 65,
-//     specialDefense: 65,
-//     speed: 45
+//     hp: 12,
+//     attack: 6,
+//     defense: 6,
+//     specialAttack: 12,
+//     specialDefense: 12,
+//     speed: 6
 //   },
 //   moves: [
 //     {
@@ -94,6 +102,9 @@ export default class Pokemon {
 //       statChange: [ {change: 2, statName: "attack"} ],
 //       target: "user",
 //       type: "normal"
-//     }
-//   ]
+//     },
+//     null,
+//     null
+//   ],
+//   movesPossible: ["pound", "sword-dance", "tackle"]
 // }
