@@ -23,6 +23,12 @@ async function randomPokemonCall(region) {
   const response = await PokemonService.randomPokemon(region);
   getElements(response);
 }
+
+async function getMoveData(name) {
+  const response = await PokemonService.getMove(name);
+  getElements(response);
+}
+
 $(document).ready(function () {
   makePokedexCall(2); // TODO:  Use configurable region
 	makePokemonCall("bulbasaur");
