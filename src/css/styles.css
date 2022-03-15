@@ -2,6 +2,11 @@ body {
 	background-color: rgb(97, 147, 255);
 }
 
+#header-image {
+  max-width: 800px;
+  max-height: 250px;
+}
+
 #main-css-container {
   position: absolute;
   height: 100%;
@@ -28,7 +33,7 @@ body {
 
  #game-ui {
     grid-row-start: 2;
-    margin: auto;
+    margin: 1em auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,36 +59,44 @@ body {
  }
  
  #upper-screen {
-   background-color: white;
-   border-radius: 4px;
-   grid-row-start:1 ;
-   display: grid;
-   grid-template-rows: 1fr 1fr;
-   grid-template-columns: 1fr 1fr;
-   width: auto;
-   height: auto;
-   column-gap: 3px;
+  background-image: url(https://mcdn.wallpapersafari.com/medium/85/89/6lOBvr.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  grid-row-start:1 ;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  width: auto;
+  height: auto;
+  column-gap: 3px;
  }
  
- #enemy-box{
+ #enemy-sprite-area{
   grid-row-start: 1;
   grid-column-start: 2;
   width: auto;
   height: auto;
-  background-color: brown;
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  
- /* #enemy-sprite {
- } */
+ .sprite-size{
+  max-width: 120px;
+  max-height: 120px;
+}
  
- #enemy-hp{
+ #enemy-hp-area{
   grid-row-start: 1;
   grid-column-start: 1;
   width: auto;
   height: auto;
-  background-color: rgb(42, 165, 93);
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  
  #player-sprite{
@@ -91,21 +104,61 @@ body {
   grid-column-start: 1;
   width: auto;
   height: auto;
-  background-color: rgb(130, 42, 165);
   border-radius: 4px;
  }
  
- #player-hp{
+ #player-hp-area{
   grid-row-start: 2;
   grid-column-start: 2;
   width: auto;
   height: auto;
-  background-color: rgb(91, 130, 175);
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  
+ .outer-hp-bar {
+   background-color: white;
+   width: 200px;
+   height: 90px;
+   border: 3px black;
+   border-style: solid;
+   border-radius: 6px;
+ }
+ 
+ #inner-hp-bar-1 {
+  box-sizing: border-box;
+  background: #ddd;
+  border-radius: 2px;
+  padding: 2px;
+  margin: 2px;
+}
+#enemy-bar-visual {
+  background: rgb(68, 204, 102);
+  width: 100%;
+  height: 10px;
+  position: relative;
+  transition: width .5s linear;
+}
+
+#inner-hp-bar-2 {
+  box-sizing: border-box;
+  background: rgb(221, 221, 221);
+  border-radius: 2px;
+  padding: 2px;
+  margin: 2px;
+}
+#player-bar-visual {
+  background: rgb(68, 204, 75);
+  width: 100%;
+  height: 10px;
+  position: relative;
+  transition: width .5s linear;
+}
+ 
  #lower-screen {
-  background-color: rgb(14, 185, 171);
+  background-color: rgb(90, 84, 84);
   border-radius: 4px;
   grid-row-start:2 ;
   width: auto;
@@ -113,7 +166,7 @@ body {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 2fr 1fr;
-  column-gap: 3px;
+  column-gap: 5px;
 }
  
  #battle-text-box{
@@ -121,8 +174,13 @@ body {
   grid-column-start: 1;
   width: auto;
   height: auto;
-  background-color: rgb(235, 49, 188);
+  background-color: rgb(255, 255, 255);
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px black;
+  border-style: solid;
  }
  
  #battle-option-box{
@@ -138,6 +196,8 @@ body {
   column-gap: 3px;
   justify-content: center;
   align-items: center;
+  border: 5px black;
+  border-style: solid;
  }
  
  .grow { 
@@ -149,11 +209,12 @@ body {
   }
   
   .battle-buttons {
-    width: auto;
-    height: auto;
-    border: 3px black;
-    border-radius: 2px;
+    width: 6em;
+    height: 2em;
+    border: 2px black;
+    border-radius: 12px;
     border-style: solid;
+    justify-self: center;
   }
   
  #fight{
