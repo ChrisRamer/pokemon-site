@@ -16,19 +16,24 @@
     </div>
 
     <div id="game-ui">
-      <div id="main-battle-screen">
 
-        <div id="upper-screen">
+      <div id="start-screen" class="screen-boundary">
 
-          <div id="enemy-sprite-area">
+      </div>
+
+      <div id="main-battle-screen" class="screen-boundary">
+
+        <div id="upper-screen" class="auto-size">
+
+          <div id="enemy-sprite-area" class="auto-size">
             <div id="sprite-1">
               <img class="sprite-size"
                 src="https://64.media.tumblr.com/d018a6132e6cc3529bd1a4df6a396f16/99035adb2db7532d-b5/s128x128u_c1/65d963266cd2ab41bf7b41dda5a7efe769be58fb.jpg"
-                alt="the pokemon tyranitar">
+                alt="opponent">
             </div>
           </div>
 
-          <div id="enemy-hp-area">
+          <div id="enemy-hp-area" class="auto-size">
             <div class="outer-hp-bar">
               <p><span id="enemy-name-change"></span>remove when working</p>
               <p class="hit-point-text">HP/</p>
@@ -40,14 +45,14 @@
             </div>
           </div>
 
-          <div id="player-sprite-area">
+          <div id="player-sprite-area" class="auto-size">
             <div id="sprite-2">
               <img class="sprite-size" src="https://cdn.pixabay.com/photo/2020/05/11/19/59/zombie-5160026_960_720.png"
-                alt="hi cat">
+                alt="random player pokemon">
             </div>
           </div>
 
-          <div id="player-hp-area">
+          <div id="player-hp-area" class="auto-size">
             <div class="outer-hp-bar">
               <p><span id="player-name-change"></span>remove when working</p>
               <p class="hit-point-text">HP/</p>
@@ -58,8 +63,8 @@
           </div>
         </div>
 
-        <div id="lower-screen">
-          <div id="battle-option-box">
+        <div id="lower-screen" class="auto-size">
+          <div id="battle-option-box" class="auto-size">
             <div id="fight" class="battle-buttons">
               <p class="grow hover">Fight</p>
             </div>
@@ -74,7 +79,7 @@
             </div>
           </div>
 
-          <div id="battle-text-box">
+          <div id="battle-text-box" class="auto-size">
             <p>Pikachu does something ...</p>
           </div>
         </div>
