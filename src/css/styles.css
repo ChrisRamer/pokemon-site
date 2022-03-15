@@ -54,15 +54,17 @@ body {
  }
  
  #upper-screen {
-   background-color: white;
-   border-radius: 4px;
-   grid-row-start:1 ;
-   display: grid;
-   grid-template-rows: 1fr 1fr;
-   grid-template-columns: 1fr 1fr;
-   width: auto;
-   height: auto;
-   column-gap: 3px;
+  background-image: url(https://mcdn.wallpapersafari.com/medium/85/89/6lOBvr.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  grid-row-start:1 ;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  width: auto;
+  height: auto;
+  column-gap: 3px;
  }
  
  #enemy-box{
@@ -70,19 +72,19 @@ body {
   grid-column-start: 2;
   width: auto;
   height: auto;
-  background-color: brown;
   border-radius: 4px;
  }
  
- /* #enemy-sprite {
- } */
+ .sprite-size{
+  max-width: 120px;
+  max-height: 120px;
+}
  
  #enemy-hp{
   grid-row-start: 1;
   grid-column-start: 1;
   width: auto;
   height: auto;
-  background-color: rgb(42, 165, 93);
   border-radius: 4px;
  }
  
@@ -91,7 +93,6 @@ body {
   grid-column-start: 1;
   width: auto;
   height: auto;
-  background-color: rgb(130, 42, 165);
   border-radius: 4px;
  }
  
@@ -100,7 +101,6 @@ body {
   grid-column-start: 2;
   width: auto;
   height: auto;
-  background-color: rgb(91, 130, 175);
   border-radius: 4px;
  }
  
