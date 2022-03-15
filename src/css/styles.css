@@ -127,6 +127,36 @@ body {
    border-radius: 6px;
  }
  
+ #inner-hp-bar-1 {
+  box-sizing: border-box;
+  background: #ddd;
+  border-radius: 2px;
+  padding: 2px;
+  margin: 2px;
+}
+#enemy-bar-visual {
+  background: rgb(68, 204, 102);
+  width: 100%;
+  height: 10px;
+  position: relative;
+  transition: width .5s linear;
+}
+
+#inner-hp-bar-2 {
+  box-sizing: border-box;
+  background: rgb(221, 221, 221);
+  border-radius: 2px;
+  padding: 2px;
+  margin: 2px;
+}
+#player-bar-visual {
+  background: rgb(68, 204, 75);
+  width: 100%;
+  height: 10px;
+  position: relative;
+  transition: width .5s linear;
+}
+ 
  #lower-screen {
   background-color: rgb(90, 84, 84);
   border-radius: 4px;
