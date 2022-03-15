@@ -12,6 +12,7 @@
 	},
 	"rules": {
 		"semi": 1,
-		"no-debugger": "warn"
+		"no-debugger": "warn",
+		"no-unused-vars": "warn"
 	}
 }

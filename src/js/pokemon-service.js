@@ -28,7 +28,8 @@ export default class PokemonService {
   static async randomPokemon(region) {
     const testService = await this.getPokedex(region);
     const randomNumber = Math.floor(Math.random() * (testService["pokemon_entries"].length));
-    return (testService["pokemon_entries"][randomNumber]["pokemon_species"]["name"]);
+    const name = (testService["pokemon_entries"][randomNumber]["pokemon_species"]["name"]);
+    return this.getPokemon(name);
   }
 
   static async getPokemon(name) {
