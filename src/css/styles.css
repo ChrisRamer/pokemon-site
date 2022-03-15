@@ -28,7 +28,7 @@ body {
 
  #game-ui {
     grid-row-start: 2;
-    margin: auto;
+    margin: 1em auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,7 +105,7 @@ body {
  }
  
  #lower-screen {
-  background-color: rgb(14, 185, 171);
+  background-color: rgb(90, 84, 84);
   border-radius: 4px;
   grid-row-start:2 ;
   width: auto;
@@ -121,8 +121,11 @@ body {
   grid-column-start: 1;
   width: auto;
   height: auto;
-  background-color: rgb(235, 49, 188);
+  background-color: rgb(255, 255, 255);
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  
  #battle-option-box{
@@ -149,11 +152,12 @@ body {
   }
   
   .battle-buttons {
-    width: auto;
-    height: auto;
-    border: 3px black;
-    border-radius: 2px;
+    width: 6em;
+    height: 2em;
+    border: 2px black;
+    border-radius: 12px;
     border-style: solid;
+    justify-self: center;
   }
   
  #fight{
