@@ -19,7 +19,7 @@ async function makePokemonCall(name) {
 	getElements(response);
 }
 
- async function newPokemonCreate(name) {
+async function newPokemonCreate(name) {
   const response = await PokemonService.getPokemon(name);
   let pokemon = new Pokemon(response, 1);
   getElements(pokemon);
@@ -40,4 +40,5 @@ $(document).ready(function () {
 	makePokemonCall("bulbasaur");
   randomPokemonCall("2");
   newPokemonCreate("bulbasaur");
+  getMoveData("pound")
 });
