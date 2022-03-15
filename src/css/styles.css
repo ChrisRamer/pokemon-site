@@ -2,6 +2,11 @@ body {
 	background-color: rgb(97, 147, 255);
 }
 
+#header-image {
+  max-width: 800px;
+  max-height: 250px;
+}
+
 #main-css-container {
   position: absolute;
   height: 100%;
@@ -67,12 +72,15 @@ body {
   column-gap: 3px;
  }
  
- #enemy-box{
+ #enemy-sprite-area{
   grid-row-start: 1;
   grid-column-start: 2;
   width: auto;
   height: auto;
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  
  .sprite-size{
@@ -80,12 +88,15 @@ body {
   max-height: 120px;
 }
  
- #enemy-hp{
+ #enemy-hp-area{
   grid-row-start: 1;
   grid-column-start: 1;
   width: auto;
   height: auto;
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  
  #player-sprite{
@@ -96,12 +107,24 @@ body {
   border-radius: 4px;
  }
  
- #player-hp{
+ #player-hp-area{
   grid-row-start: 2;
   grid-column-start: 2;
   width: auto;
   height: auto;
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ .outer-hp-bar {
+   background-color: white;
+   width: 200px;
+   height: 90px;
+   border: 3px black;
+   border-style: solid;
+   border-radius: 6px;
  }
  
  #lower-screen {
@@ -113,7 +136,7 @@ body {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 2fr 1fr;
-  column-gap: 3px;
+  column-gap: 5px;
 }
  
  #battle-text-box{
@@ -126,6 +149,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 5px black;
+  border-style: solid;
  }
  
  #battle-option-box{
@@ -141,6 +166,8 @@ body {
   column-gap: 3px;
   justify-content: center;
   align-items: center;
+  border: 5px black;
+  border-style: solid;
  }
  
  .grow { 
