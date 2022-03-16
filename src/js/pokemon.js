@@ -69,7 +69,7 @@ export default class Pokemon {
       statData.push({change: value, statName: stat});
     });
     
-    if(slotNumber === (0 || 1 || 2 || 3) && targetData !== null) {
+    if((slotNumber === 0 || slotNumber === 1 || slotNumber === 2 || slotNumber === 3) && targetData !== null) {
       if(this.moves[slotNumber] !== null) {
         this.movesPossible.push(this.moves[slotNumber].name);
       }
@@ -84,7 +84,7 @@ export default class Pokemon {
         target: targetData,
         type: bigMove.type.name,
         class: bigMove["damage_class"].name
-      }
+      };
     }
   }
 }
@@ -131,7 +131,7 @@ export default class Pokemon {
 //       ppMax: 35,
 //       ppCurrent: 35,
 //       statChange: [],
-//       target: "opponent",
+//       target: "enemy",
 //       type: "normal",
 //       class: "physical"
 //     },
@@ -143,7 +143,7 @@ export default class Pokemon {
 //       ppMax: 20,
 //       ppCurrent: 20,
 //       statChange: [ {change: 2, statName: "attack"} ],
-//       target: "user",
+//       target: "self",
 //       type: "normal"
 //       class: "status"
 //     },
