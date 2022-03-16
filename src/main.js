@@ -41,9 +41,10 @@ async function getTypeData(type) {
 }
 
 $(document).ready(function () {
-  //makePokedexCall(2); // TODO:  Use configurable region
-	//makePokemonCall("bulbasaur");
-  //randomPokemonCall("2");
-  //newPokemonCreate("bulbasaur");
   getTypeData("normal");
+  makePokedexCall(2); // TODO:  Use configurable region
+	makePokemonCall("bulbasaur");
+  randomPokemonCall("2");
+  newPokemonCreate("bulbasaur");
+  getMoveData("pound")
 });
