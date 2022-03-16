@@ -19,7 +19,7 @@ async function makePokemonCall(name) {
 	getElements(response);
 }
 
- async function newPokemonCreate(name) {
+async function newPokemonCreate(name) {
   const response = await PokemonService.getPokemon(name);
   let pokemon = new Pokemon(response, 1);
   getElements(pokemon);
@@ -35,9 +35,16 @@ async function getMoveData(name) {
   getElements(response);
 }
 
+async function getTypeData(type) {
+  const response = await PokemonService.getType(type);
+  getElements(response);
+}
+
 $(document).ready(function () {
+  getTypeData("normal");
   makePokedexCall(2); // TODO:  Use configurable region
 	makePokemonCall("bulbasaur");
   randomPokemonCall("2");
   newPokemonCreate("bulbasaur");
+  getMoveData("pound")
 });
