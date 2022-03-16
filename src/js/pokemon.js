@@ -47,6 +47,46 @@ export default class Pokemon {
       speed: Math.ceil(((this.baseStats.speed * 2 * this.level) / 100) + 5)
     };
   }
+
+  changeMove(bigMove, slotNumber) {
+    const targetData = (bigMove.target.name === "selected-pokemon-me-first") ? "enemy" :
+    (bigMove.target.name === "users-field") ? "self" :
+    (bigMove.target.name === "user-or-ally") ? "self" :
+    (bigMove.target.name === "opponents-field") ? "enemy" :
+    (bigMove.target.name === "user") ? "self" :
+    (bigMove.target.name === "random-opponent") ? "enemy" :
+    (bigMove.target.name === "all-other-pokemon") ? "enemy" :
+    (bigMove.target.name === "selected-pokemon") ? "enemy" :
+    (bigMove.target.name === "all-opponents") ? "enemy" :
+    (bigMove.target.name === "entire-field") ? "all" :
+    (bigMove.target.name === "user-and-allies") ? "self" :
+    (bigMove.target.name === "all-pokemon") ? "all" : null;
+    let statData = [];
+    bigMove["stat_changes"].forEach((effect) => {
+      const value = effect.change;
+      const stat = (effect.stat.name === "special-attack") ? "specialAttack" : 
+      (effect.stat.name === "special-defence") ? "specialDefence" : effect.stat.name;
+      statData.push({change: value, statName: stat});
+    });
+    
+    if((slotNumber === 0 || slotNumber === 1 || slotNumber === 2 || slotNumber === 3) && targetData !== null) {
+      if(this.moves[slotNumber] !== null) {
+        this.movesPossible.push(this.moves[slotNumber].name);
+      }
+      this.moves[slotNumber] = {
+        name: bigMove.name,
+        flavorText: bigMove["effect_entries"][0].effect,
+        accuracy: bigMove.accuracy,
+        power: bigMove.power,
+        ppMax: bigMove.pp,
+        ppCurrent: bigMove.pp,
+        statChange: statData,
+        target: targetData,
+        type: bigMove.type.name,
+        class: bigMove["damage_class"].name
+      };
+    }
+  }
 }
 
 
@@ -86,22 +126,26 @@ export default class Pokemon {
 //     {
 //       name: "Pound",
 //       flavorText: "Inflicts regular damage.",
+//       accuracy: 100,
 //       power: 40,
 //       ppMax: 35,
 //       ppCurrent: 35,
 //       statChange: [],
-//       target: "opponent",
-//       type: "normal"
+//       target: "enemy",
+//       type: "normal",
+//       class: "physical"
 //     },
 //     {
 //       name: "Sword-Dance",
 //       flavorText: "Raises the user's Attack by two stages.",
+//       accuracy: null,
 //       power: null,
 //       ppMax: 20,
 //       ppCurrent: 20,
 //       statChange: [ {change: 2, statName: "attack"} ],
-//       target: "user",
+//       target: "self",
 //       type: "normal"
+//       class: "status"
 //     },
 //     null,
 //     null
