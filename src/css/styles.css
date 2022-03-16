@@ -48,11 +48,24 @@ body {
     
 }
 
-#main-battle-screen {
-  background-color: rgb(90, 84, 84);
+.screen-boundary {
   width: 670px;
   height: 470px;
   border-radius: 6px;
+}
+
+.auto-size {
+  width: auto;
+  height: auto;
+}
+
+#start-screen {
+  background-color: beige;
+  display: none;
+}
+
+#main-battle-screen {
+  background-color: rgb(90, 84, 84);
   display: grid;
   grid-template-rows: 2fr 1fr;
   grid-row-gap: 5px;
@@ -67,16 +80,12 @@ body {
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
-  width: auto;
-  height: auto;
   column-gap: 3px;
  }
  
  #enemy-sprite-area{
   grid-row-start: 1;
   grid-column-start: 2;
-  width: auto;
-  height: auto;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -91,34 +100,28 @@ body {
  #enemy-hp-area{
   grid-row-start: 1;
   grid-column-start: 1;
-  width: auto;
-  height: auto;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
  }
  
- #player-sprite{
+ #player-sprite-area{
   grid-row-start: 2;
   grid-column-start: 1;
-  width: auto;
-  height: auto;
   border-radius: 4px;
  }
  
  #player-hp-area{
   grid-row-start: 2;
   grid-column-start: 2;
-  width: auto;
-  height: auto;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
  }
  
- .outer-hp-bar {
+ #hp-bar-placement-1 {
    background-color: white;
    width: 200px;
    height: 90px;
@@ -126,6 +129,15 @@ body {
    border-style: solid;
    border-radius: 6px;
  }
+ 
+ #hp-bar-placement-2 {
+  background-color: white;
+  width: 200px;
+  height: 90px;
+  border: 3px black;
+  border-style: solid;
+  border-radius: 6px;
+}
  
  #inner-hp-bar-1 {
   box-sizing: border-box;
@@ -161,8 +173,6 @@ body {
   background-color: rgb(90, 84, 84);
   border-radius: 4px;
   grid-row-start:2 ;
-  width: auto;
-  height: auto;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 2fr 1fr;
@@ -172,8 +182,6 @@ body {
  #battle-text-box{
   grid-row-start: 1;
   grid-column-start: 1;
-  width: auto;
-  height: auto;
   background-color: rgb(255, 255, 255);
   border-radius: 4px;
   display: flex;
@@ -186,8 +194,6 @@ body {
  #battle-option-box{
   grid-row-start: 1;
   grid-column-start: 2;
-  width: auto;
-  height: auto;
   background-color: rgb(255, 255, 255);
   border-radius: 4px;
   display: grid;
