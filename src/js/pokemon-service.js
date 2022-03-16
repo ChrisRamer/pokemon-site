@@ -25,6 +25,19 @@ export default class PokemonService {
     }
   }
 
+  static async getType(type) {
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+
+      return response.json();
+    } catch (error) {
+      return error.message;
+    }
+  }
+
   static async randomPokemon(region) {
     const testService = await this.getPokedex(region);
     const randomNumber = Math.floor(Math.random() * (testService["pokemon_entries"].length));
