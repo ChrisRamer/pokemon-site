@@ -121,7 +121,7 @@ body {
   align-items: center;
  }
  
- .outer-hp-bar {
+ #hp-bar-placement-1 {
    background-color: white;
    width: 200px;
    height: 90px;
@@ -129,6 +129,15 @@ body {
    border-style: solid;
    border-radius: 6px;
  }
+ 
+ #hp-bar-placement-2 {
+  background-color: white;
+  width: 200px;
+  height: 90px;
+  border: 3px black;
+  border-style: solid;
+  border-radius: 6px;
+}
  
  #inner-hp-bar-1 {
   box-sizing: border-box;
