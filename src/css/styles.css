@@ -122,6 +122,9 @@ body {
  }
  
  #hp-bar-placement-1 {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
    background-color: white;
    width: 200px;
    height: 90px;
@@ -131,6 +134,9 @@ body {
  }
  
  #hp-bar-placement-2 {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   background-color: white;
   width: 200px;
   height: 90px;
@@ -138,14 +144,41 @@ body {
   border-style: solid;
   border-radius: 6px;
 }
+
+#hit-point-text-2{
+  grid-row-start: 3;
+  grid-column: 2;
+}
+
+#player-name-change{
+  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-column-end: 6;
+}
  
+#hit-point-text{
+  grid-row-start: 3;
+  grid-column: 2;
+}
+
+#enemy-name-change{
+  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-column-end: 6;
+}
+
  #inner-hp-bar-1 {
+  width: 90%;
+  height: 20%;
+  grid-row: 3/3;
+  grid-column: 3/10;
   box-sizing: border-box;
   background: #ddd;
   border-radius: 2px;
   padding: 2px;
   margin: 2px;
 }
+
 #enemy-bar-visual {
   background: rgb(68, 204, 102);
   width: 100%;
@@ -155,12 +188,17 @@ body {
 }
 
 #inner-hp-bar-2 {
+  width: 90%;
+  height: 20%;
+  grid-row: 3/3;
+  grid-column: 3/10;
   box-sizing: border-box;
   background: rgb(221, 221, 221);
   border-radius: 2px;
   padding: 2px;
   margin: 2px;
 }
+
 #player-bar-visual {
   background: rgb(68, 204, 75);
   width: 100%;
