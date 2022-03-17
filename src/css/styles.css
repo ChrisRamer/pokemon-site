@@ -25,7 +25,7 @@
   border-style: solid;
  }
  
- .battle-option-box{
+ #battle-option-box{
   grid-row-start: 1;
   grid-column-start: 2;
   background-color: rgb(255, 255, 255);
@@ -38,10 +38,7 @@
   align-items: center;
   border: 5px black;
   border-style: solid;
- }
- 
- #battle-options-main {
-   display: normal;
+  visibility: visible;
  }
 
 body {
@@ -107,7 +104,7 @@ body {
 }
 
 .grow { 
-  transition: all .2s ease-in-out; 
+  transition: all .1s; 
   }
   
   .grow:hover { 
@@ -130,8 +127,20 @@ body {
   text-align: center;
 }
 
-#moves-option{
-  display: none;
+#move-options{
+  grid-row-start: 1;
+  grid-column-start: 2;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3px;
+  justify-content: center;
+  align-items: center;
+  border: 5px black;
+  border-style: solid;
+  visibility: hidden;
 }
 
 #move-1{

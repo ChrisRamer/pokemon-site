@@ -37,24 +37,32 @@ async function newPokemonCreate(name) {
 // }
 
 function getRandomNumber(min, max) {
-	return Math.ceil(Math.random() * ((max - min) + 1) + min);
+  return Math.ceil(Math.random() * ((max - min) + 1) + min);
 }
 
 function createBattleObject() {
-	// Gets random pokemon object
-	let randNum = getRandomNumber(0, pokemonList.length - 1);
-	let randPokemon = pokemonList[randNum];
-	newPokemonCreate(randPokemon).then((playerPokemon) => {
-		randNum = getRandomNumber(0, pokemonList.length - 1);
-		randPokemon = pokemonList[randNum];
-		newPokemonCreate(randPokemon).then((opposingPokemon) => {
-			console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
-		});
-	});
+  // Gets random pokemon object
+  let randNum = getRandomNumber(0, pokemonList.length - 1);
+  let randPokemon = pokemonList[randNum];
+  newPokemonCreate(randPokemon).then((playerPokemon) => {
+    randNum = getRandomNumber(0, pokemonList.length - 1);
+    randPokemon = pokemonList[randNum];
+    newPokemonCreate(randPokemon).then((opposingPokemon) => {
+      console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
+    });
+  });
 }
 
 function capitalizeFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+//when fight is clicked will transition to moves menu
+function fightToMoves() {
+  $("#fight").click(function () {
+    $("#battle-option-box").css("visibility", "hidden");
+    $("#move-options").css("visibility", "visible");
+  });
 }
 
 //Store list of pokemon by region
@@ -66,8 +74,9 @@ makePokedexCall(1).then((response) => {
 });
 
 $(document).ready(function () {
-  $("#fight").on("click", function() {createBattleObject();});
-  $("#run").on("click", function () {console.log("run!");});
-  $("#pokemon").on("click", function() {console.log("party!");});
-  $("#items").on("click", function() {console.log("items!");});
+  fightToMoves();
+  $("#fight").on("click", function () { createBattleObject(); });
+  $("#run").on("click", function () { console.log("run!"); });
+  $("#pokemon").on("click", function () { console.log("party!"); });
+  $("#items").on("click", function () { console.log("items!"); });
 });
