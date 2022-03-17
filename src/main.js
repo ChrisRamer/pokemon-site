@@ -57,6 +57,46 @@ function capitalizeFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+//example code for random integer within range taken from MDN Docs
+//found at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function playerHealthBar() {
+  const playerHpBar = $("#inner-hp-bar-2");
+  const bar = playerHpBar.find("#hp-player-container");
+  const hit = playerHpBar.find("#player-bar-visual");
+  $("#items").click(function () {
+    // const damageFromEnemy = Math.floor(Math.random() * 6) + 1;
+    const damageFromEnemy = getRandomInt(1, 6);
+    console.log("random math log", damageFromEnemy);
+    const totalBarHp = playerHpBar.data('total');
+    console.log("hp bar total", totalBarHp);
+    const value = playerHpBar.data("value");
+    console.log("hp bar value", value);
+    const hpDamage = damageFromEnemy;
+    const newHpValue = value - hpDamage;
+    const barWidth = (newHpValue / totalBarHp) * 100;
+    const hitBarWidth = (hpDamage / value) * 100 + "%";
+    console.log('barWidth: ', barWidth);
+    //
+    hit.css('width', barWidth);
+    playerHpBar.data('value', newHpValue);
+    bar.css('hit', barWidth + "%");
+    // setTimeout(function () {
+    //   hit.css({ 'width': '0' });
+    //   bar.css('width', barWidth + "%");
+    // }, 100);
+  });
+}
+
+// function enemyHealthBar() {
+
+// }
+
 //when fight is clicked will transition to moves menu
 function fightToMoves() {
   $("#fight").click(function () {
@@ -74,7 +114,8 @@ makePokedexCall(1).then((response) => {
 });
 
 $(document).ready(function () {
-  fightToMoves();
+  // fightToMoves();
+  playerHealthBar();
   $("#fight").on("click", function () { createBattleObject(); });
   $("#run").on("click", function () { console.log("run!"); });
   $("#pokemon").on("click", function () { console.log("party!"); });
