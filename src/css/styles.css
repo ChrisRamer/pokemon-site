@@ -25,7 +25,7 @@
   border-style: solid;
  }
  
- #battle-option-box{
+ .battle-option-box{
   grid-row-start: 1;
   grid-column-start: 2;
   background-color: rgb(255, 255, 255);
@@ -38,6 +38,10 @@
   align-items: center;
   border: 5px black;
   border-style: solid;
+ }
+ 
+ #battle-options-main {
+   display: normal;
  }
 
 body {
@@ -126,19 +130,7 @@ body {
   text-align: center;
 }
 
-#moves-option-box{
-  grid-row-start: 1;
-  grid-column-start: 2;
-  background-color: rgb(255, 255, 255);
-  border-radius: 4px;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 3px;
-  justify-content: center;
-  align-items: center;
-  border: 5px black;
-  border-style: solid;
+#moves-option{
   display: none;
 }
 
