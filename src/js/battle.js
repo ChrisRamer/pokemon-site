@@ -15,8 +15,8 @@ export default class Battle {
 	}
 
 	setupPokemon() {
-		this.playerPokemon.currentStats = this.playerPokemon.maxStats;
-		this.opposingPokemon.currentStats = this.opposingPokemon.maxStats;
+		this.playerPokemon["currentStats"] = JSON.parse(JSON.stringify(this.playerPokemon["maxStats"]));
+		this.opposingPokemon["currentStats"] = JSON.parse(JSON.stringify(this.opposingPokemon["maxStats"]));
 	}
 
 	playerTurn() {
@@ -24,19 +24,24 @@ export default class Battle {
 
 		// TODO: Handle button events for moves; these would call handleMove()
 
-		this.changeTurns(true);
+		const randMove = this.playerPokemon.moves[Math.floor(Math.random() * (this.playerPokemon.moves.length - 1))];
+		this.handleMove(this.playerPokemon, this.opposingPokemon, randMove);
+
+		setTimeout(this.changeTurns, 5000, true);
 	}
 
 	aiTurn() {
 		$("playerOptions").hide();
 
-		this.changeTurns(false);
+		// Select random possible move, call handleMove()
+
+		setTimeout(this.changeTurns, 5000, false);
 	}
 
 	changeTurns(isPlayerTurn) {
 		if (isPlayerTurn) {
 			// If player's current pokemon isn't dead
-			if (!this.isPokemonDead(this.playerPokemon)) {
+			if (!this.isPokemonDead, this.playerPokemon) {
 				this.playerTurn();
 			}
 
@@ -44,11 +49,11 @@ export default class Battle {
 
 			// If player's current pokemon is dead and has no pokemon left in party
 			else {
-				this.finishBattle(false);
+				this.finishBattle, false;
 			}
 		} else {
 			// If AI's current pokemon isn't dead
-			if (!this.isPokemonDead(this.opposingPokemon)) {
+			if (!this.isPokemonDead, this.opposingPokemon) {
 				this.aiTurn();
 			}
 
@@ -63,18 +68,20 @@ export default class Battle {
 
 	handleMove(attacker, victim, move) {
 		const damage = this.calculateDamage(attacker, victim, move);
+		console.log(`${attacker.name} used ${move.name}! It did ${damage} damage! Wowie!`);
 		victim.currentStats.hp -= damage;
 
 		// TODO: Update victim's HP bar
 
 		// If victim HP is 0, faint
-		if (this.isPokemonDead(victim)) {
-			this.handleFaint(victim);
+		if (this.isPokemonDead, victim) {
+			this.handleFaint, victim;
 		}
 	}
 
 	calculateDamage(attacker, victim, move) {
-		const power = move.power;
+		const power = move.power == null ? 0 : move.power;
+		if (power <= 0) return 0;
 		const attack = attacker.currentStats.attack;
 		const defense = victim.currentStats.defense;
 		return (((((2 * attacker.level) / 5) + 2) * power * (attack / defense)) / 50) + 2;
