@@ -57,45 +57,64 @@ function capitalizeFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-//example code for random integer within range taken from MDN Docs
-//found at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+// example code for random integer within range taken from MDN Docs
+// found at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function playerHealthBar() {
+function playerHealthBar(pokemonHp) {
+  // next 3 vars below finds and stores player hp bar from html
   const playerHpBar = $("#inner-hp-bar-2");
   const bar = playerHpBar.find("#hp-player-container");
   const hit = playerHpBar.find("#player-bar-visual");
+  //below pokemonTotalHp value will be replaced by pokemon hp total
+  const pokemonTotalHp = pokemonHp;
+  //jquery solution to setting the data attribute of the playerHpBar element
+  playerHpBar.attr('data-value', pokemonTotalHp);
+  playerHpBar.attr('data-total', pokemonTotalHp);
+  // click function to test hp bar below event type can be changed
   $("#items").click(function () {
-    // const damageFromEnemy = Math.floor(Math.random() * 6) + 1;
-    const damageFromEnemy = getRandomInt(1, 6);
-    console.log("random math log", damageFromEnemy);
+    const damageFromEnemy = getRandomInt(5, 20); // damage numbers change number with enemy damage
     const totalBarHp = playerHpBar.data('total');
-    console.log("hp bar total", totalBarHp);
     const value = playerHpBar.data("value");
-    console.log("hp bar value", value);
     const hpDamage = damageFromEnemy;
     const newHpValue = value - hpDamage;
     const barWidth = (newHpValue / totalBarHp) * 100;
-    const hitBarWidth = (hpDamage / value) * 100 + "%";
-    console.log('barWidth: ', barWidth);
-    //
-    hit.css('width', barWidth);
+    const hitBarWidth = (hpDamage / value) * 100;
+    hit.css('width', barWidth + "%"); //remaining bar width
     playerHpBar.data('value', newHpValue);
-    bar.css('hit', barWidth + "%");
-    // setTimeout(function () {
-    //   hit.css({ 'width': '0' });
-    //   bar.css('width', barWidth + "%");
-    // }, 100);
+    bar.css('hit', hitBarWidth + "%");
   });
 }
 
-// function enemyHealthBar() {
-
-// }
+function enemyHealthBar(enemyHp) {
+  // next 3 vars below finds and stores enemy hp bar from html
+  const enemyHpBar = $("#inner-hp-bar-1");
+  const bar = enemyHpBar.find("#hp-enemy-container");
+  const hit = enemyHpBar.find("#enemy-bar-visual");
+  //below enemyTotalHp value will be replaced by pokemon hp total
+  const enemyTotalHp = enemyHp;
+  //jquery solution to setting the data attribute of the enemyHpBar element
+  enemyHpBar.attr('data-value', enemyTotalHp);
+  enemyHpBar.attr('data-total', enemyTotalHp);
+  // click function to test hp bar below event type can be changed
+  $("#run").click(function () {
+    const damageFromPlayer = getRandomInt(5, 20); // damage numbers. change number with player damage
+    const totalBarHp = enemyHpBar.data('total');
+    const value = enemyHpBar.data("value");
+    const hpDamage = damageFromPlayer;
+    const newHpValue = value - hpDamage;
+    const barWidth = (newHpValue / totalBarHp) * 100;
+    const hitBarWidth = (hpDamage / value) * 100;
+    hit.css('width', barWidth + "%"); //remaining bar width
+    enemyHpBar.data('value', newHpValue);
+    bar.css('hit', hitBarWidth + "%");
+  });
+}
 
 //when fight is clicked will transition to moves menu
 function fightToMoves() {
@@ -115,7 +134,8 @@ makePokedexCall(1).then((response) => {
 
 $(document).ready(function () {
   // fightToMoves();
-  playerHealthBar();
+  playerHealthBar(100);
+  enemyHealthBar(120);
   $("#fight").on("click", function () { createBattleObject(); });
   $("#run").on("click", function () { console.log("run!"); });
   $("#pokemon").on("click", function () { console.log("party!"); });
