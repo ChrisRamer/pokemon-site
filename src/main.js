@@ -29,17 +29,9 @@ async function getMoveData(name) {
 // }
 
 
-//Random Functions
+    //Random Functions
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * ((max - min) + 1) + min); //Can reach max
-}
-
-// example code for random integer within range taken from MDN Docs
-// found at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-function getRandomInt(min, max) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //Can not reach max
 }
 
 function capitalizeFirst(string) {
@@ -47,17 +39,17 @@ function capitalizeFirst(string) {
 }
 
 
-//Battle Functions
+    //Battle Functions
 function createBattleObject(playerPokemon, opposingPokemon) {
 	// Create battle object
   console.log(playerPokemon);
   console.log(opposingPokemon);
+	console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
   currentBattle = new Battle(playerPokemon, opposingPokemon);
-  console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
 }
 
 
-//Pokemon Functions
+    //Pokemon Functions
 function pokemonCreate(pokeObject, startingLevel) {
   let pokemonMade = new Pokemon(pokeObject, startingLevel);
   pokemonChangeMove(pokemonMade, 0);
@@ -75,6 +67,8 @@ function pokemonChangeMove(pokemonToChange, slot) {
   });
 }
 
+
+    //Front-End interactions
 function playerHealthBar(pokemonHp) {
   // next 3 vars below finds and stores player hp bar from html
   const playerHpBar = $("#inner-hp-bar-2");
@@ -87,7 +81,7 @@ function playerHealthBar(pokemonHp) {
   playerHpBar.attr('data-total', pokemonTotalHp);
   // click function to test hp bar below event type can be changed
   $("#items").click(function () {
-    const damageFromEnemy = getRandomInt(5, 20); // damage numbers change number with enemy damage
+    const damageFromEnemy = getRandomNumber(5, 20); // damage numbers change number with enemy damage
     const totalBarHp = playerHpBar.data('total');
     const value = playerHpBar.data("value");
     const hpDamage = damageFromEnemy;
@@ -112,7 +106,7 @@ function enemyHealthBar(enemyHp) {
   enemyHpBar.attr('data-total', enemyTotalHp);
   // click function to test hp bar below event type can be changed
   $("#run").click(function () {
-    const damageFromPlayer = getRandomInt(5, 20); // damage numbers. change number with player damage
+    const damageFromPlayer = getRandomNumber(5, 20); // damage numbers. change number with player damage
     const totalBarHp = enemyHpBar.data('total');
     const value = enemyHpBar.data("value");
     const hpDamage = damageFromPlayer;
@@ -134,14 +128,14 @@ function fightToMoves() {
 }
 
 
-//Declare Variables
+    //Declare Variables
 let currentBattle;
 let pokemonList = [];
 let playerPokemon = {};
 let opposingPokemon = {};
 
 
-//Initialize variables
+    //Initialize variables
 makePokedexCall(1).then((response) => {
   response["pokemon_entries"].forEach((pokemon) => {
     const str = pokemon["pokemon_species"].url.slice(-7);
@@ -151,6 +145,8 @@ makePokedexCall(1).then((response) => {
   });
 });
 
+
+    //Document Loaded
 $(document).ready(function () {
   makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
     playerPokemon = pokemonCreate(pokemonName, 1);
@@ -162,7 +158,8 @@ $(document).ready(function () {
   // fightToMoves();
   playerHealthBar(100);
   enemyHealthBar(120);
-  $("#fight").on("click", function () { createBattleObject(playerPokemon, opposingPokemon); });
+  $("#header-image").on("click", function() { createBattleObject(playerPokemon, opposingPokemon); });
+  $("#fight").on("click", function () { console.log("fight!"); });
   $("#run").on("click", function () { console.log("run!"); });
   $("#pokemon").on("click", function () { console.log("party!"); });
   $("#items").on("click", function () { console.log("items!"); });

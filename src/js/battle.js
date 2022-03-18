@@ -15,8 +15,8 @@ export default class Battle {
 	}
 
 	setupPokemon() {
-		this.playerPokemon["currentStats"] = this.playerPokemon["maxStats"];
-		this.opposingPokemon["currentStats"] = this.opposingPokemon["maxStats"];
+		this.playerPokemon["currentStats"] = JSON.parse(JSON.stringify(this.playerPokemon["maxStats"]));
+		this.opposingPokemon["currentStats"] = JSON.parse(JSON.stringify(this.opposingPokemon["maxStats"]));
 	}
 
 	playerTurn() {
@@ -67,9 +67,8 @@ export default class Battle {
 	}
 
 	handleMove(attacker, victim, move) {
-		console.log("Handling move for: " + move);
 		const damage = this.calculateDamage(attacker, victim, move);
-		console.log(`${move} did ${damage}!`);
+		console.log(`${attacker.name} used ${move.name}! It did ${damage} damage! Wowie!`);
 		victim.currentStats.hp -= damage;
 
 		// TODO: Update victim's HP bar
@@ -82,6 +81,7 @@ export default class Battle {
 
 	calculateDamage(attacker, victim, move) {
 		const power = move.power == null ? 0 : move.power;
+		if (power <= 0) return 0;
 		const attack = attacker.currentStats.attack;
 		const defense = victim.currentStats.defense;
 		return (((((2 * attacker.level) / 5) + 2) * power * (attack / defense)) / 50) + 2;
