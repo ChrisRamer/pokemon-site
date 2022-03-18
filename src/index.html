@@ -35,11 +35,12 @@
 
           <div id="enemy-hp-area" class="auto-size">
             <div id="hp-bar-placement-1">
-              <p><span id="enemy-name-change"></span>remove when working</p>
-              <p class="hit-point-text">HP/</p>
+              <p id="enemy-name-change"><span id="enemy-poke-name"></span>plushiemon</p>
+              <p id="hit-point-text">HP/</p>
               <div id="inner-hp-bar-1" data-total="100" data-value="100">
-                <div id="enemy-bar-visual">
-
+                <div id="hp-enemy-container">
+                  <div id="enemy-bar-visual">
+                  </div>
                 </div>
               </div>
             </div>
@@ -54,10 +55,13 @@
 
           <div id="player-hp-area" class="auto-size">
             <div id="hp-bar-placement-2">
-              <p><span id="player-name-change"></span>remove when working</p>
+              <p id="player-name-change"><span id="player-poke-name"></span>zombiechu</p>
               <p id="hit-point-text-2">HP/</p>
-              <div id="inner-hp-bar-2" data-total="100" data-value="100">
-                <div id="player-bar-visual"></div>
+              <div id="inner-hp-bar-2" data-total="" data-value="">
+                <!-- both data and value need to be the same as pokemon hp = hp bar having same number as pokemon -->
+                <div id="hp-player-container">
+                  <div id="player-bar-visual"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -78,9 +82,23 @@
               <p class="grow hover">Items</p>
             </div>
           </div>
+          <div id="move-options" class="auto-size">
+            <div id="move-1" class="battle-buttons">
+              <p class="grow hover">move1<span id="api-move-1"></span></p>
+            </div>
+            <div id="move-2" class="battle-buttons">
+              <p class="grow hover">move2<span id="api-move-2"></span></p>
+            </div>
+            <div id="move-3" class="battle-buttons">
+              <p class="grow hover">move3<span id="api-move-3"></span></p>
+            </div>
+            <div id="move-4" class="battle-buttons">
+              <p class="grow hover">move4<span id="api-move-4"></span></p>
+            </div>
+          </div>
 
           <div id="battle-text-box" class="auto-size">
-            <p>Pikachu does something ...</p>
+            <p><span id="battle-text-control"></span>Pikachu does something/ remove this text ...</p>
           </div>
         </div>
 
