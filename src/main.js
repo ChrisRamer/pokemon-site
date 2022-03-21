@@ -5,6 +5,7 @@ import './css/styles.css';
 import Pokemon from './js/pokemon';
 import PokemonService from './js/pokemon-service';
 import Battle from './js/battle';
+import { Sounds } from "./js/audio";
 
 //API Calls
 async function makePokedexCall(region) {
@@ -12,8 +13,8 @@ async function makePokedexCall(region) {
   return response;
 }
 async function makePokemonCall(name) {
-	const response = await PokemonService.getPokemon(name);
-	return response;
+  const response = await PokemonService.getPokemon(name);
+  return response;
 }
 // async function randomPokemonCall(region) {
 //   const response = await PokemonService.randomPokemon(region);
@@ -29,7 +30,7 @@ async function getMoveData(name) {
 // }
 
 
-    //Random Functions
+//Random Functions
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * ((max - min) + 1) + min); //Can reach max
 }
@@ -39,17 +40,17 @@ function capitalizeFirst(string) {
 }
 
 
-    //Battle Functions
+//Battle Functions
 function createBattleObject(playerPokemon, opposingPokemon) {
-	// Create battle object
+  // Create battle object
   console.log(playerPokemon);
   console.log(opposingPokemon);
-	console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
+  console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
   currentBattle = new Battle(playerPokemon, opposingPokemon);
 }
 
 
-    //Pokemon Functions
+//Pokemon Functions
 function pokemonCreate(pokeObject, startingLevel) {
   let pokemonMade = new Pokemon(pokeObject, startingLevel);
   pokemonChangeMove(pokemonMade, 0);
@@ -68,7 +69,7 @@ function pokemonChangeMove(pokemonToChange, slot) {
 }
 
 
-    //Front-End interactions
+//Front-End interactions
 function playerHealthBar(pokemonHp) {
   // next 3 vars below finds and stores player hp bar from html
   const playerHpBar = $("#inner-hp-bar-2");
@@ -128,14 +129,18 @@ function fightToMoves() {
 }
 
 
-    //Declare Variables
+// audio area
+let gameAudio = new Sounds();
+
+
+//Declare Variables
 let currentBattle;
 let pokemonList = [];
 let playerPokemon = {};
 let opposingPokemon = {};
 
 
-    //Initialize variables
+//Initialize variables
 makePokedexCall(1).then((response) => {
   response["pokemon_entries"].forEach((pokemon) => {
     const str = pokemon["pokemon_species"].url.slice(-7);
@@ -146,7 +151,7 @@ makePokedexCall(1).then((response) => {
 });
 
 
-    //Document Loaded
+//Document Loaded
 $(document).ready(function () {
   makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
     playerPokemon = pokemonCreate(pokemonName, 1);
@@ -158,8 +163,8 @@ $(document).ready(function () {
   // fightToMoves();
   playerHealthBar(100);
   enemyHealthBar(120);
-  $("#header-image").on("click", function() { createBattleObject(playerPokemon, opposingPokemon); });
-  $("#fight").on("click", function () { console.log("fight!"); });
+  $("#header-image").on("click", function () { createBattleObject(playerPokemon, opposingPokemon); });
+  $("#fight").on("click", function () { console.log("fight!"); gameAudio.sound1.play(); },);
   $("#run").on("click", function () { console.log("run!"); });
   $("#pokemon").on("click", function () { console.log("party!"); });
   $("#items").on("click", function () { console.log("items!"); });
