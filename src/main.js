@@ -164,7 +164,7 @@ $(document).ready(function () {
   playerHealthBar(100);
   enemyHealthBar(120);
   $("#header-image").on("click", function () { createBattleObject(playerPokemon, opposingPokemon); });
-  $("#fight").on("click", function () { console.log("fight!"); gameAudio.sound1.play(); },);
+  $("#fight").on("click", function () { console.log("fight!"); });
   $("#run").on("click", function () { console.log("run!"); });
   $("#pokemon").on("click", function () { console.log("party!"); });
   $("#items").on("click", function () { console.log("items!"); });
