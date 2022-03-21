@@ -5,7 +5,7 @@ import './css/styles.css';
 import Pokemon from './js/pokemon';
 import PokemonService from './js/pokemon-service';
 import Battle from './js/battle';
-import { Sounds } from "./js/audio";
+const sounds = require('./js/audio.js');
 
 //API Calls
 async function makePokedexCall(region) {
@@ -29,7 +29,6 @@ async function getMoveData(name) {
 //   return response;
 // }
 
-
 //Random Functions
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * ((max - min) + 1) + min); //Can reach max
@@ -39,7 +38,6 @@ function capitalizeFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
 //Battle Functions
 function createBattleObject(playerPokemon, opposingPokemon) {
   // Create battle object
@@ -48,7 +46,6 @@ function createBattleObject(playerPokemon, opposingPokemon) {
   console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
   currentBattle = new Battle(playerPokemon, opposingPokemon);
 }
-
 
 //Pokemon Functions
 function pokemonCreate(pokeObject, startingLevel) {
@@ -121,19 +118,14 @@ function damageToEnemyHealthBar(damageEnemy) {
   console.log(newHpValue);
 }
 
-// // audio area
-// let gameAudio = new Sounds();
-
 // audio area
-let gameAudio = new Sounds();
-
+// let gameAudio = sounds;
 
 //Declare Variables
 let currentBattle;
 let pokemonList = [];
 let playerPokemon = {};
 let opposingPokemon = {};
-
 
 //Initialize variables
 makePokedexCall(1).then((response) => {
@@ -144,7 +136,6 @@ makePokedexCall(1).then((response) => {
     pokemonList.push(entryNumber);
   });
 });
-
 
 //Document Loaded
 $(document).ready(function () {
@@ -161,10 +152,12 @@ $(document).ready(function () {
   let playerPokeDamage = 10
   let enemyPokeDamage = 20
   $("#items").click(function () {
+    sounds.blip.play();
     playerSetHealthBar(playerPokeHealth);
     enemySetHealthBar(enemyPokeHealth);
   });
   $("#run").click(function () {
+    sounds.sound1.play();
     damageToPlayerHealthBar(enemyPokeDamage);
     damageToEnemyHealthBar(playerPokeDamage);
   });
