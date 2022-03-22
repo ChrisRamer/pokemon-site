@@ -139,7 +139,7 @@ makePokedexCall(1).then((response) => {
 
 //Document Loaded
 $(document).ready(function () {
-  // const sounds = new GameSounds();
+  const sounds = new GameSounds();
   makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
     playerPokemon = pokemonCreate(pokemonName, 1);
   });
@@ -147,21 +147,21 @@ $(document).ready(function () {
     opposingPokemon = pokemonCreate(pokemonName, 1);
   });
 
-  //for testing new hp bar functions below
-  let playerPokeHealth = 120
-  let enemyPokeHealth = 100
-  let playerPokeDamage = 10
-  let enemyPokeDamage = 20
+  //for testing new sounds
   $("#items").click(function () {
-    // sounds.startSongIntro();
-    playerSetHealthBar(playerPokeHealth);
-    enemySetHealthBar(enemyPokeHealth);
+    sounds.startSongIntro();
   });
   $("#run").click(function () {
-    damageToPlayerHealthBar(enemyPokeDamage);
-    damageToEnemyHealthBar(playerPokeDamage);
+    sounds.battleSongIntro();
   });
-  //end of test/ change and remove above
+  $('#fight').click(function () {
+
+  });
+  $("#pokemon").click(function () {
+    sounds.endStartSong();
+    sounds.endBattleSong();
+  });
+  //end of test/ change and or remove above
 
   // fightToMoves();
   $("#header-image").on("click", function () { createBattleObject(playerPokemon, opposingPokemon); });

@@ -1,8 +1,12 @@
 import blip from '../audio/blip1.wav';
-import battle from '../audio/battle.mp3';
+import battleIntro from '../audio/battle-start.wav';
+import battleLoop from '../audio/battle-loop.wav';
+import battleEnd from '../audio/battle-end.wav';
 import coin from '../audio/coin.wav';
 import grow from '../audio/grow.wav';
-import hurry from '../audio/hurry.mp3';
+import hurryIntro from '../audio/hurry-start.wav';
+import hurryLoop from '../audio/hurry-loop.wav';
+import hurryEnd from '../audio/hurry-end.wav';
 import levelUp from '../audio/levelUp.mp3';
 import attack1 from '../audio/PoisonSting.wav';
 import attack2 from '../audio/Pound.wav';
@@ -15,14 +19,21 @@ import attack8 from '../audio/WhirlWind.wav';
 import save from '../audio/save.wav';
 import victory from '../audio/victory2.mp3';
 import trainer from '../audio/trainer.mp3';
+import loss from '../audio/loss.mp3';
 
 export default class GameSounds {
+  // fix audio volume
+  // stop battle sound on end
   constructor() {
     this.blip = new Audio(blip);
-    this.battle = new Audio(battle);
+    this.battleIntro = new Audio(battleIntro);
+    this.battleLoop = new Audio(battleLoop);
+    this.battleEnd = new Audio(battleEnd);
     this.coin = new Audio(coin);
     this.grow = new Audio(grow);
-    this.hurry = new Audio(hurry);
+    this.hurryIntro = new Audio(hurryIntro);
+    this.hurryLoop = new Audio(hurryLoop);
+    this.hurryEnd = new Audio(hurryEnd);
     this.levelUp = new Audio(levelUp);
     this.attack1 = new Audio(attack1);
     this.attack2 = new Audio(attack2);
@@ -35,6 +46,22 @@ export default class GameSounds {
     this.save = new Audio(save);
     this.victory = new Audio(victory);
     this.trainer = new Audio(trainer);
+    this.loss = new Audio(loss);
+
+    this.hurryIntro.onended = () => {
+      this.hurryLoop.play();
+      this.hurryLoop.loop = true;
+    }
+    this.hurryLoop.onended = () => {
+      this.hurryEnd.play();
+    }
+    this.battleIntro.onended = () => {
+      this.battleLoop.play();
+      this.battleLoop.loop = true;
+    }
+    this.battleLoop.onended = () => {
+      this.battleEnd.play();
+    }
   }
 
   playBlip() {
@@ -63,15 +90,18 @@ export default class GameSounds {
   }
 
   startSongIntro() {
-    let audio = this.hurry
-    audio.currentTime = 0
-    audio.play();
-    console.log(audio.currentTime);
-
-    setInterval(function () {
-      if (audio.currentTime > 10) {
-        audio.pause();
-      }
-    }, 1000)
+    this.hurryIntro.play();
   }
+  endStartSong() {
+    this.hurryLoop.loop = false;
+  }
+
+  battleSongIntro() {
+    this.battleIntro.play();
+  }
+
+  endBattleSong() {
+    this.battleLoop.loop = false;
+  }
+
 }
