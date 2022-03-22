@@ -62,16 +62,16 @@ export default class GameSounds {
     }
   }
 
+  startSongIntro() {
+    let audio = this.hurry
+    audio.currentTime = 0
+    audio.play();
+    console.log(audio.currentTime);
+
+    setInterval(function () {
+      if (audio.currentTime > 10) {
+        audio.pause();
+      }
+    }, 1000)
+  }
 }
-
-// export let sounds = {
-//   sound1: new Audio(require('../audio/hurry.mp3')),
-//   blip: new Audio(blip)
-// };
-
-// module.exports = {
- // sound1: new Audio(require('../assets/sound/hurry.mp3')),
-  // sound2: './assets/sound/blip1.wav',
-  // sound3: './assets/sound/coin1.wav',
-  // sound4: './assets/sound/grow.wav'
-//};

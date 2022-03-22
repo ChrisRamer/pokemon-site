@@ -139,7 +139,7 @@ makePokedexCall(1).then((response) => {
 
 //Document Loaded
 $(document).ready(function () {
-  const sounds = new GameSounds();
+  // const sounds = new GameSounds();
   makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
     playerPokemon = pokemonCreate(pokemonName, 1);
   });
@@ -153,15 +153,13 @@ $(document).ready(function () {
   let playerPokeDamage = 10
   let enemyPokeDamage = 20
   $("#items").click(function () {
-    sounds.battleRandomSound();
+    // sounds.startSongIntro();
     playerSetHealthBar(playerPokeHealth);
     enemySetHealthBar(enemyPokeHealth);
   });
   $("#run").click(function () {
-    // sounds.sound1.play();
     damageToPlayerHealthBar(enemyPokeDamage);
     damageToEnemyHealthBar(playerPokeDamage);
-    sounds.playBlip();
   });
   //end of test/ change and remove above
 
