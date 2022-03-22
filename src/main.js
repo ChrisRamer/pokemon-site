@@ -5,7 +5,7 @@ import './css/styles.css';
 import Pokemon from './js/pokemon';
 import PokemonService from './js/pokemon-service';
 import Battle from './js/battle';
-// import { Sounds } from "./js/audio";
+import GameSounds from './js/audio.js';
 
 //API Calls
 async function makePokedexCall(region) {
@@ -29,7 +29,6 @@ async function getMoveData(name) {
 //   return response;
 // }
 
-
 //Random Functions
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * ((max - min) + 1) + min); //Can reach max
@@ -39,16 +38,14 @@ function capitalizeFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
 //Battle Functions
 function createBattleObject(playerPokemon, opposingPokemon) {
   // Create battle object
   console.log(playerPokemon);
   console.log(opposingPokemon);
   console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
-  // currentBattle = new Battle(playerPokemon, opposingPokemon);
+  currentBattle = new Battle(playerPokemon, opposingPokemon);
 }
-
 
 //Pokemon Functions
 function pokemonCreate(pokeObject, startingLevel) {
@@ -121,15 +118,14 @@ function damageToEnemyHealthBar(damageEnemy) {
   console.log(newHpValue);
 }
 
-// // audio area
-// let gameAudio = new Sounds();
+// audio area
+// let gameAudio = sounds;
 
 //Declare Variables
 let currentBattle;
 let pokemonList = [];
 let playerPokemon = {};
 let opposingPokemon = {};
-
 
 //Initialize variables
 makePokedexCall(1).then((response) => {
@@ -141,9 +137,9 @@ makePokedexCall(1).then((response) => {
   });
 });
 
-
 //Document Loaded
 $(document).ready(function () {
+  // const sounds = new GameSounds();
   makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
     playerPokemon = pokemonCreate(pokemonName, 1);
   });
@@ -157,6 +153,7 @@ $(document).ready(function () {
   let playerPokeDamage = 10
   let enemyPokeDamage = 20
   $("#items").click(function () {
+    // sounds.startSongIntro();
     playerSetHealthBar(playerPokeHealth);
     enemySetHealthBar(enemyPokeHealth);
   });
