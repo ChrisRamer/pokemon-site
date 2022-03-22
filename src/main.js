@@ -5,7 +5,7 @@ import './css/styles.css';
 import Pokemon from './js/pokemon';
 import PokemonService from './js/pokemon-service';
 import Battle from './js/battle';
-const sounds = require('./js/audio.js');
+import GameSounds from './js/audio.js';
 
 //API Calls
 async function makePokedexCall(region) {
@@ -139,6 +139,7 @@ makePokedexCall(1).then((response) => {
 
 //Document Loaded
 $(document).ready(function () {
+  const sounds = new GameSounds();
   makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
     playerPokemon = pokemonCreate(pokemonName, 1);
   });
@@ -152,14 +153,15 @@ $(document).ready(function () {
   let playerPokeDamage = 10
   let enemyPokeDamage = 20
   $("#items").click(function () {
-    sounds.blip.play();
+    sounds.battleRandomSound();
     playerSetHealthBar(playerPokeHealth);
     enemySetHealthBar(enemyPokeHealth);
   });
   $("#run").click(function () {
-    sounds.sound1.play();
+    // sounds.sound1.play();
     damageToPlayerHealthBar(enemyPokeDamage);
     damageToEnemyHealthBar(playerPokeDamage);
+    sounds.playBlip();
   });
   //end of test/ change and remove above
 
