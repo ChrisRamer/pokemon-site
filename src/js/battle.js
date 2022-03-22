@@ -1,9 +1,11 @@
 import $ from 'jquery';
+import FrontEndFunctions from './frontEndFunctions';
 
 export default class Battle {
 	constructor(playerPokemon, opposingPokemon) {
 		this.playerPokemon = playerPokemon;
 		this.opposingPokemon = opposingPokemon;
+		this.frontEnd = new FrontEndFunctions();
 		this.startBattle();
 	}
 
@@ -20,6 +22,7 @@ export default class Battle {
 	}
 
 	playerTurn() {
+		this.isPlayerTurn = true;
 		$("playerOptions").show();
 
 		// TODO: Handle button events for moves; these would call handleMove()
@@ -31,6 +34,7 @@ export default class Battle {
 	}
 
 	aiTurn() {
+		this.isPlayerTurn = false;
 		$("playerOptions").hide();
 
 		// Select random possible move, call handleMove()
@@ -71,7 +75,11 @@ export default class Battle {
 		console.log(`${attacker.name} used ${move.name}! It did ${damage} damage! Wowie!`);
 		victim.currentStats.hp -= damage;
 
-		// TODO: Update victim's HP bar
+		if (this.isPlayerTurn) {
+			this.frontEnd.damageToEnemyHealthBar(damage);
+		} else {
+			this.frontEnd.damageToPlayerHealthBar(damage);
+		}
 
 		// If victim HP is 0, faint
 		if (this.isPokemonDead, victim) {
@@ -84,7 +92,7 @@ export default class Battle {
 		if (power <= 0) return 0;
 		const attack = attacker.currentStats.attack;
 		const defense = victim.currentStats.defense;
-		return (((((2 * attacker.level) / 5) + 2) * power * (attack / defense)) / 50) + 2;
+		return Math.floor((((((2 * attacker.level) / 5) + 2) * power * (attack / defense)) / 50) + 2);
 	}
 
 	isPokemonDead(pokemon) {
