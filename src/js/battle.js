@@ -10,8 +10,7 @@ export default class Battle {
 	}
 
 	startBattle() {
-		// TODO: Hide other menus
-		$("battleMenu").show();
+		this.frontEnd.showBattleOptions();
 		this.setupPokemon();
 		this.playerTurn();
 	}
@@ -23,7 +22,7 @@ export default class Battle {
 
 	playerTurn() {
 		this.isPlayerTurn = true;
-		$("playerOptions").show();
+		this.frontEnd.showBattleOptions();
 
 		// TODO: Handle button events for moves; these would call handleMove()
 
@@ -35,7 +34,7 @@ export default class Battle {
 
 	aiTurn() {
 		this.isPlayerTurn = false;
-		$("playerOptions").hide();
+		this.frontEnd.hideBattleOptions();
 
 		// Select random possible move, call handleMove()
 
@@ -72,8 +71,11 @@ export default class Battle {
 
 	handleMove(attacker, victim, move) {
 		const damage = this.calculateDamage(attacker, victim, move);
-		console.log(`${attacker.name} used ${move.name}! It did ${damage} damage! Wowie!`);
+		const message = `${attacker.name} used ${move.name}! It did ${damage} damage! Wowie!`;
 		victim.currentStats.hp -= damage;
+
+		console.log(message);
+		this.frontEnd.updateTurnSummary(message);
 
 		if (this.isPlayerTurn) {
 			this.frontEnd.damageToEnemyHealthBar(damage);

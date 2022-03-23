@@ -51,4 +51,16 @@ export default class FrontEndFunctions {
 		bar.css('hit', hitBarWidth + "%");
 		console.log(newHpValue);
 	}
+
+	updateTurnSummary(newMessage) {
+		$("#battle-text-control").text(newMessage);
+	}
+
+	showBattleOptions() {
+		$("#battle-option-box").css("visibility", "visible");
+	}
+
+	hideBattleOptions() {
+		$("#battle-option-box").css("visibility", "hidden");
+	}
 }
