@@ -140,6 +140,7 @@ makePokedexCall(1).then((response) => {
 //Document Loaded
 $(document).ready(function () {
   const sounds = new GameSounds();
+  sounds.setVolume();
   makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
     playerPokemon = pokemonCreate(pokemonName, 1);
   });
@@ -155,7 +156,7 @@ $(document).ready(function () {
     sounds.battleSongIntro();
   });
   $('#fight').click(function () {
-
+    sounds.mute();
   });
   $("#pokemon").click(function () {
     sounds.endStartSong();

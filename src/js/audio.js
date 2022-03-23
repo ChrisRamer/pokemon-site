@@ -68,6 +68,54 @@ export default class GameSounds {
     this.blip.play();
   }
 
+  setVolume() {
+    this.attack1.volume = 0.02;
+    this.attack2.volume = 0.02;
+    this.attack3.volume = 0.02;
+    this.attack4.volume = 0.02;
+    this.attack5.volume = 0.02;
+    this.attack6.volume = 0.02;
+    this.attack7.volume = 0.02;
+    this.attack8.volume = 0.02;
+    this.blip.volume = 0.02;
+    this.battleIntro.volume = 0.02;
+    this.battleLoop.volume = 0.02;
+    this.battleEnd.volume = 0.02;
+    this.hurryIntro.volume = 0.02;
+    this.hurryEnd.volume = 0.02;
+    this.hurryLoop.volume = 0.02;
+    this.save.volume = 0.02;
+    this.victory.volume = 0.02;
+    this.trainer.volume = 0.02;
+    this.loss.volume = 0.02;
+    this.coin.volume = 0.02;
+    this.grow.volume = 0.02;
+  }
+
+  mute() {
+    this.attack1.volume = 0.0;
+    this.attack2.volume = 0.0;
+    this.attack3.volume = 0.0;
+    this.attack4.volume = 0.0;
+    this.attack5.volume = 0.0;
+    this.attack6.volume = 0.0;
+    this.attack7.volume = 0.0;
+    this.attack8.volume = 0.0;
+    this.blip.volume = 0.0;
+    this.battleIntro.volume = 0.0;
+    this.battleLoop.volume = 0.0;
+    this.battleEnd.volume = 0.0;
+    this.hurryIntro.volume = 0.0;
+    this.hurryEnd.volume = 0.0;
+    this.hurryLoop.volume = 0.0;
+    this.save.volume = 0.0;
+    this.victory.volume = 0.0;
+    this.trainer.volume = 0.0;
+    this.loss.volume = 0.0;
+    this.coin.volume = 0.0;
+    this.grow.volume = 0.0;
+  }
+
   battleRandomSound() {
     let randomNumber = Math.floor(Math.random() * 8) + 1;
     if (randomNumber == 1) {
