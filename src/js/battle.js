@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import FrontEndFunctions from './frontEndFunctions';
 
 export default class Battle {
@@ -9,10 +8,15 @@ export default class Battle {
 		this.startBattle();
 	}
 
-	startBattle() {
-		this.frontEnd.showBattleOptions();
+	async startBattle() {
+		this.frontEnd.hideBattleOptions();
 		this.setupPokemon();
-		this.playerTurn();
+		this.frontEnd.initializeBoard(this.playerPokemon, this.opposingPokemon);
+		this.frontEnd.updateTurnSummary(`${this.playerPokemon.name} encountered a wild ${this.opposingPokemon.name}!`);
+		this.frontEnd.playerSetHealthBar(this.playerPokemon.maxStats.hp);
+		this.frontEnd.enemySetHealthBar(this.opposingPokemon.maxStats.hp);
+
+		this.changeTurns(true);
 	}
 
 	setupPokemon() {
@@ -29,20 +33,28 @@ export default class Battle {
 		const randMove = this.playerPokemon.moves[Math.floor(Math.random() * (this.playerPokemon.moves.length - 1))];
 		this.handleMove(this.playerPokemon, this.opposingPokemon, randMove);
 
-		setTimeout(this.changeTurns, 5000, true);
+		this.changeTurns();
 	}
 
 	aiTurn() {
 		this.isPlayerTurn = false;
 		this.frontEnd.hideBattleOptions();
 
-		// Select random possible move, call handleMove()
+		const randMove = this.opposingPokemon.moves[Math.floor(Math.random() * (this.opposingPokemon.moves.length - 1))];
+		this.handleMove(this.opposingPokemon, this.playerPokemon, randMove);
 
-		setTimeout(this.changeTurns, 5000, false);
+		this.changeTurns();
 	}
 
-	changeTurns(isPlayerTurn) {
-		if (isPlayerTurn) {
+	async changeTurns() {
+		if (this.isPokemonDead(this.playerPokemon) || this.isPokemonDead(this.opposingPokemon)) {
+			this.finishBattle();
+			return;
+		}
+
+		const trash = await this.waitForMilliseconds(2500);
+
+		if (!this.isPlayerTurn) {
 			// If player's current pokemon isn't dead
 			if (!this.isPokemonDead, this.playerPokemon) {
 				this.playerTurn();
@@ -98,7 +110,7 @@ export default class Battle {
 	}
 
 	isPokemonDead(pokemon) {
-		return pokemon.currentStats.hp <= 0;
+		return (pokemon.currentStats.hp <= 0);
 	}
 
 	handleFaint(victim) {
@@ -107,5 +119,14 @@ export default class Battle {
 
 	finishBattle(playerWon) {
 		// TODO: this
+		console.log("Battle ended");
+	}
+
+	waitForMilliseconds(time) {
+		return new Promise(resolve => {
+			setTimeout(() => {
+				resolve("resolved");
+			}, time);
+		});
 	}
 }
