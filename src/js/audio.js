@@ -116,6 +116,30 @@ export default class GameSounds {
     this.grow.volume = 0.0;
   }
 
+  setUserVolume(userVolume) {
+    this.attack1.volume = userVolume;
+    this.attack2.volume = userVolume;
+    this.attack3.volume = userVolume;
+    this.attack4.volume = userVolume;
+    this.attack5.volume = userVolume;
+    this.attack6.volume = userVolume;
+    this.attack7.volume = userVolume;
+    this.attack8.volume = userVolume;
+    this.blip.volume = userVolume;
+    this.battleIntro.volume = userVolume;
+    this.battleLoop.volume = userVolume;
+    this.battleEnd.volume = userVolume;
+    this.hurryIntro.volume = userVolume;
+    this.hurryEnd.volume = userVolume;
+    this.hurryLoop.volume = userVolume;
+    this.save.volume = userVolume;
+    this.victory.volume = userVolume;
+    this.trainer.volume = userVolume;
+    this.loss.volume = userVolume;
+    this.coin.volume = userVolume;
+    this.grow.volume = userVolume;
+  }
+
   battleRandomSound() {
     let randomNumber = Math.floor(Math.random() * 8) + 1;
     if (randomNumber == 1) {

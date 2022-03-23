@@ -119,7 +119,9 @@ function damageToEnemyHealthBar(damageEnemy) {
 }
 
 // audio area
-// let gameAudio = sounds;
+let sound2 = new GameSounds();
+
+sound2.getOwnPropertyNames();
 
 //Declare Variables
 let currentBattle;

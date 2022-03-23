@@ -315,3 +315,49 @@ body {
   grid-template-columns: 1fr 1fr;
   column-gap: 3px;
  }
+ 
+ #volume-bar {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+ }
+ 
+ #volume {
+  grid-row-start: 1;
+  grid-column-start: 3;
+  border: 5px black;
+  border-style: solid;
+  width: 100px;
+  justify-self: center;
+  align-self: center;
+ }
+ 
+ #volume-mute {
+  grid-row-start: 1;
+  grid-column-start: 2;
+  border: 5px black;
+  border-style: solid;
+  visibility: hidden;
+ }
+ 
+ #volume-low {
+  grid-row-start: 1;
+  grid-column-start: 3;
+  border: 5px black;
+  border-style: solid;
+  visibility: hidden;
+ }
+ #volume-medium {
+  grid-row-start: 1;
+  grid-column-start: 4;
+  border: 5px black;
+  border-style: solid;
+  visibility: hidden;
+ }
+ #volume-high {
+  grid-row-start: 1;
+  grid-column-start: 5;
+  border: 5px black;
+  border-style: solid;
+  visibility: hidden;
+ }
