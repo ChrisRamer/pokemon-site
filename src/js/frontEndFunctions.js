@@ -51,8 +51,8 @@ export default class FrontEndFunctions {
 	}
 
 	initializeBoard(playerPokemon, enemyPokemon) {
-		const enemySprite = (enemyPokemon.spriteFront === null) ? enemyPokemon.spriteFront : enemyPokemon.spriteBack;
-		const playerSprite = (playerPokemon.spriteBack === null) ? playerPokemon.spriteBack : playerPokemon.spriteFront;
+		const enemySprite = (enemyPokemon.spriteFront === null) ? enemyPokemon.spriteBack : enemyPokemon.spriteFront;
+		const playerSprite = (playerPokemon.spriteBack === null) ? playerPokemon.spriteFront : playerPokemon.spriteBack;
 		$("#sprite-1").children("img").eq(0).attr("src", enemySprite);
 		$("#sprite-2").children("img").eq(0).attr("src", playerSprite);
 		$("#enemy-name-change").text(enemyPokemon.name);

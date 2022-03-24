@@ -6,6 +6,7 @@ import Pokemon from './js/pokemon';
 import PokemonService from './js/pokemon-service';
 import Battle from './js/battle';
 import GameSounds from './js/audio.js';
+import BattleUILogic from "./js/battleUILogic";
 
 //API Calls
 async function makePokedexCall(region) {
@@ -39,6 +40,14 @@ function capitalizeFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function waitMilliseconds(time) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, time);
+  });
+}
+
 
 //Battle Functions
 function createBattleObject(playerPokemon, opposingPokemon) {
@@ -46,17 +55,23 @@ function createBattleObject(playerPokemon, opposingPokemon) {
   console.log(playerPokemon);
   console.log(opposingPokemon);
   console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
-  currentBattle = new Battle(playerPokemon, opposingPokemon);
+  //currentBattle = new Battle(playerPokemon, opposingPokemon);
+	currentBattle = new BattleUILogic(playerPokemon, opposingPokemon);
 }
 
 
 //Pokemon Functions
 function pokemonCreate(pokeObject, startingLevel) {
+  const timeDelay = 1000;
   let pokemonMade = new Pokemon(pokeObject, startingLevel);
-  pokemonChangeMove(pokemonMade, 0);
-  pokemonChangeMove(pokemonMade, 1);
-  pokemonChangeMove(pokemonMade, 2);
-  pokemonChangeMove(pokemonMade, 3);
+  for(let i = 0; i <= 3; i++) {
+    pokemonChangeMove(pokemonMade, i);
+    setTimeout(() => {
+      if(pokemonMade.moves[i] === null){
+        pokemonChangeMove(pokemonMade, i);
+      }
+    }, timeDelay);
+  }
   return pokemonMade;
 }
 function pokemonChangeMove(pokemonToChange, slot) {
@@ -90,11 +105,15 @@ makePokedexCall(1).then((response) => {
 $(document).ready(function () {
   const sounds = new GameSounds();
   sounds.setVolume();
-  makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
-    playerPokemon = pokemonCreate(pokemonName, 1);
+  waitMilliseconds(1000).then(() => {
+    makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
+      playerPokemon = pokemonCreate(pokemonName, 1);
+    });
   });
-  makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
-    opposingPokemon = pokemonCreate(pokemonName, 1);
+  waitMilliseconds(1000).then(() => {
+    makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
+      opposingPokemon = pokemonCreate(pokemonName, 1);
+    });
   });
 
   //for testing new sounds

@@ -9,12 +9,12 @@ export default class Battle {
 	}
 
 	async startBattle() {
-		this.frontEnd.hideBattleOptions();
+		//this.frontEnd.hideBattleOptions();
 		this.setupPokemon();
-		this.frontEnd.initializeBoard(this.playerPokemon, this.opposingPokemon);
-		this.frontEnd.updateTurnSummary(`${this.playerPokemon.name} encountered a wild ${this.opposingPokemon.name}!`);
-		this.frontEnd.playerSetHealthBar(this.playerPokemon.maxStats.hp);
-		this.frontEnd.enemySetHealthBar(this.opposingPokemon.maxStats.hp);
+		//this.frontEnd.initializeBoard(this.playerPokemon, this.opposingPokemon);
+		//this.frontEnd.updateTurnSummary(`${this.playerPokemon.name} encountered a wild ${this.opposingPokemon.name}!`);
+		//this.frontEnd.playerSetHealthBar(this.playerPokemon.maxStats.hp);
+		//this.frontEnd.enemySetHealthBar(this.opposingPokemon.maxStats.hp);
 
 		this.changeTurns(true);
 	}
@@ -82,6 +82,8 @@ export default class Battle {
 	}
 
 	handleMove(attacker, victim, move) {
+		// TODO: Return some sorta turn result (eg. if it resulted in faint, damage done, etc.) to do the below UI stuff in hybrid class
+
 		const damage = this.calculateDamage(attacker, victim, move);
 		const message = `${attacker.name} used ${move.name}! It did ${damage} damage! Wowie!`;
 		victim.currentStats.hp -= damage;
