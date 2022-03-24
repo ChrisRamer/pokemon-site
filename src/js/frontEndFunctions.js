@@ -24,7 +24,6 @@ export default class FrontEndFunctions {
 		hit.css('width', barWidth + "%"); //remaining bar width
 		playerHpBar.data('value', newHpValue);
 		bar.css('hit', hitBarWidth + "%");
-		console.log(newHpValue);
 	}
 
 	enemySetHealthBar(enemyHp) {
@@ -49,7 +48,19 @@ export default class FrontEndFunctions {
 		hit.css('width', barWidth + "%"); //remaining bar width
 		enemyHpBar.data('value', newHpValue);
 		bar.css('hit', hitBarWidth + "%");
-		console.log(newHpValue);
+	}
+
+	initializeBoard(playerPokemon, enemyPokemon) {
+		const enemySprite = (enemyPokemon.spriteFront === null) ? enemyPokemon.spriteFront : enemyPokemon.spriteBack;
+		const playerSprite = (playerPokemon.spriteBack === null) ? playerPokemon.spriteBack : playerPokemon.spriteFront;
+		$("#sprite-1").children("img").eq(0).attr("src", enemySprite);
+		$("#sprite-2").children("img").eq(0).attr("src", playerSprite);
+		$("#enemy-name-change").text(enemyPokemon.name);
+		$("#player-name-change").text(playerPokemon.name);
+		$("#api-move-1").text(playerPokemon.moves[0].name);
+		$("#api-move-2").text(playerPokemon.moves[1].name);
+		$("#api-move-3").text(playerPokemon.moves[2].name);
+		$("#api-move-4").text(playerPokemon.moves[3].name);
 	}
 
 	updateTurnSummary(newMessage) {
@@ -58,9 +69,11 @@ export default class FrontEndFunctions {
 
 	showBattleOptions() {
 		$("#battle-option-box").css("visibility", "visible");
+		$("#move-options").css("visibility", "visible");
 	}
 
 	hideBattleOptions() {
 		$("#battle-option-box").css("visibility", "hidden");
+		$("#move-options").css("visibility", "hidden");
 	}
 }

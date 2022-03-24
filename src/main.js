@@ -29,6 +29,7 @@ async function getMoveData(name) {
 //   return response;
 // }
 
+
 //Random Functions
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * ((max - min) + 1) + min); //Can reach max
@@ -38,6 +39,7 @@ function capitalizeFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+
 //Battle Functions
 function createBattleObject(playerPokemon, opposingPokemon) {
   // Create battle object
@@ -46,6 +48,7 @@ function createBattleObject(playerPokemon, opposingPokemon) {
   console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
   currentBattle = new Battle(playerPokemon, opposingPokemon);
 }
+
 
 //Pokemon Functions
 function pokemonCreate(pokeObject, startingLevel) {
@@ -65,69 +68,12 @@ function pokemonChangeMove(pokemonToChange, slot) {
   });
 }
 
-// //Front-End interactions
-
-function playerSetHealthBar(playerHp) {
-  const playerHpBar = $("#inner-hp-bar-2");
-  //below pokemonTotalHp value will be replaced by pokemon hp total
-  const pokemonTotalHp = playerHp;
-  //jquery solution to setting the data attribute of the playerHpBar element
-  playerHpBar.attr('data-value', pokemonTotalHp);
-  playerHpBar.attr('data-total', pokemonTotalHp);
-}
-
-function damageToPlayerHealthBar(damagePlayer) {
-  const playerHpBar = $("#inner-hp-bar-2");
-  const bar = playerHpBar.find("#hp-player-container");
-  const hit = playerHpBar.find("#player-bar-visual");
-  const damageFromEnemy = damagePlayer // damage numbers
-  const totalBarHp = playerHpBar.data('total');
-  const value = playerHpBar.data("value");
-  const hpDamage = damageFromEnemy;
-  const newHpValue = value - hpDamage;
-  const barWidth = (newHpValue / totalBarHp) * 100;
-  const hitBarWidth = (hpDamage / value) * 100;
-  hit.css('width', barWidth + "%"); //remaining bar width
-  playerHpBar.data('value', newHpValue);
-  bar.css('hit', hitBarWidth + "%");
-  console.log(newHpValue);
-}
-
-function enemySetHealthBar(enemyHp) {
-  const enemyHpBar = $("#inner-hp-bar-1");
-  //below pokemonTotalHp value 
-  const enemyTotalHp = enemyHp;
-  enemyHpBar.attr('data-value', enemyTotalHp);
-  enemyHpBar.attr('data-total', enemyTotalHp);
-}
-
-function damageToEnemyHealthBar(damageEnemy) {
-  const enemyHpBar = $("#inner-hp-bar-1");
-  const bar = enemyHpBar.find("#hp-enemy-container");
-  const hit = enemyHpBar.find("#enemy-bar-visual");
-  const damageFromPlayer = damageEnemy
-  const totalBarHp = enemyHpBar.data('total');
-  const value = enemyHpBar.data("value");
-  const hpDamage = damageFromPlayer;
-  const newHpValue = value - hpDamage;
-  const barWidth = (newHpValue / totalBarHp) * 100;
-  const hitBarWidth = (hpDamage / value) * 100;
-  hit.css('width', barWidth + "%"); //remaining bar width
-  enemyHpBar.data('value', newHpValue);
-  bar.css('hit', hitBarWidth + "%");
-  console.log(newHpValue);
-}
-
-// audio area
-let sound2 = new GameSounds();
-
-sound2.getOwnPropertyNames();
-
 //Declare Variables
 let currentBattle;
 let pokemonList = [];
 let playerPokemon = {};
 let opposingPokemon = {};
+
 
 //Initialize variables
 makePokedexCall(1).then((response) => {
@@ -138,6 +84,7 @@ makePokedexCall(1).then((response) => {
     pokemonList.push(entryNumber);
   });
 });
+
 
 //Document Loaded
 $(document).ready(function () {
