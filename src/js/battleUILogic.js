@@ -23,7 +23,8 @@ export default class BattleUILogic {
 
 	// Handles a move selection during player's turn
 	handlePlayerMoveSelection(move) {
-		const moveResult = this.battle.selectPlayerMove(move);
-		this.frontEnd.updateTurnSummary(moveResult);
+		if (!this.battle.battleFinished) {
+			this.battle.selectPlayerMove(move);
+		}
 	}
 }
