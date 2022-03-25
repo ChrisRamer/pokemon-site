@@ -23,9 +23,9 @@
   align-items: center;
   border: 5px black;
   border-style: solid;
- }
+}
 
- #battle-option-box{
+#battle-option-box{
   grid-row-start: 1;
   grid-column-start: 2;
   background-color: rgb(255, 255, 255);
@@ -38,8 +38,7 @@
   align-items: center;
   border: 5px black;
   border-style: solid;
-  visibility: visible;
- }
+}
 
 body {
 	background-color: rgb(97, 147, 255);
@@ -60,9 +59,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
- }
+  }
 
- #enemy-name-change{
+  #enemy-name-change{
   grid-row-start: 1;
   grid-column-start: 2;
   grid-column-end: 6;
@@ -75,12 +74,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
- }
+}
 
- #fight{
+#fight{
   grid-row-start: 1;
   grid-column-start: 1;
- }
+}
 
 #footer {
   grid-row-start: 3;
@@ -173,15 +172,15 @@ body {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-   background-color: white;
-   width: 200px;
-   height: 90px;
-   border: 3px black;
-   border-style: solid;
-   border-radius: 6px;
- }
+    background-color: white;
+    width: 200px;
+    height: 90px;
+    border: 3px black;
+    border-style: solid;
+    border-radius: 6px;
+}
 
- #hp-bar-placement-2 {
+#hp-bar-placement-2 {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -230,9 +229,9 @@ body {
 #items{
   grid-row-start: 2;
   grid-column-start: 1;
- }
+}
 
- #lower-screen {
+#lower-screen {
   background-color: rgb(90, 84, 84);
   border-radius: 4px;
   grid-row-start:2 ;
@@ -242,27 +241,29 @@ body {
   column-gap: 5px;
 }
 
- #main-battle-screen {
+#main-battle-screen {
   background-color: rgb(90, 84, 84);
   display: grid;
   grid-template-rows: 2fr 1fr;
   grid-row-gap: 5px;
- }
+  z-index: 1;
+  visibility: hidden;
+}
 
- #player-sprite-area{
+#player-sprite-area{
   grid-row-start: 2;
   grid-column-start: 1;
   border-radius: 4px;
- }
+}
 
- #player-hp-area{
+#player-hp-area{
   grid-row-start: 2;
   grid-column-start: 2;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
- }
+}
 
 #player-name-change{
   grid-row-start: 1;
@@ -278,35 +279,35 @@ body {
   transition: width .5s linear;
 }
 
- #pokemon{
+#pokemon{
   grid-row-start: 1;
   grid-column-start: 2;
- }
+}
 
- #run{
+#run{
   grid-row-start: 2;
   grid-column-start: 2;
- }
+}
 
- .screen-boundary {
+.screen-boundary {
   width: 670px;
   height: 470px;
   border-radius: 6px;
 }
 
- .sprite-size{
+.sprite-size{
   max-width: 120px;
   max-height: 120px;
 }
 
 #start-screen {
   background-color: beige;
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  /* width: 100%; */
 }
-
-/* #start-button {
-
-} */
 
 #upper-screen {
   background-image: url(https://mcdn.wallpapersafari.com/medium/85/89/6lOBvr.png);
@@ -318,15 +319,15 @@ body {
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   column-gap: 3px;
- }
+}
 
- #volume-bar {
+#volume-bar {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
- }
+}
 
- #volume {
+#volume {
   grid-row-start: 1;
   grid-column-start: 3;
   border: 5px black;
@@ -334,34 +335,36 @@ body {
   width: 100px;
   justify-self: center;
   align-self: center;
- }
+}
 
- #volume-mute {
+#volume-mute {
   grid-row-start: 1;
   grid-column-start: 2;
   border: 5px black;
   border-style: solid;
   visibility: hidden;
- }
+}
 
- #volume-low {
+#volume-low {
   grid-row-start: 1;
   grid-column-start: 3;
   border: 5px black;
   border-style: solid;
   visibility: hidden;
- }
- #volume-medium {
+}
+
+#volume-medium {
   grid-row-start: 1;
   grid-column-start: 4;
   border: 5px black;
   border-style: solid;
   visibility: hidden;
- }
- #volume-high {
+}
+
+#volume-high {
   grid-row-start: 1;
   grid-column-start: 5;
   border: 5px black;
   border-style: solid;
   visibility: hidden;
- }
+}

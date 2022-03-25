@@ -7,6 +7,7 @@ import PokemonService from './js/pokemon-service';
 import Battle from './js/battle';
 import GameSounds from './js/audio.js';
 import BattleUILogic from "./js/battleUILogic";
+import FrontEnd from './js/frontEndFunctions';
 
 //API Calls
 async function makePokedexCall(region) {
@@ -103,6 +104,7 @@ makePokedexCall(1).then((response) => {
 
 //Document Loaded
 $(document).ready(function () {
+  const frontEnd = new FrontEnd();
   const sounds = new GameSounds();
   sounds.setVolume();
   waitMilliseconds(1000).then(() => {
@@ -115,7 +117,14 @@ $(document).ready(function () {
       opposingPokemon = pokemonCreate(pokemonName, 1);
     });
   });
-
+  
+  $("#start-button").click(function () {
+    frontEnd.hideStartScreen();
+  });
+  
+  $("#volume").click(function () {
+    frontEnd.volumeControllerShow();
+  });
   //for testing new sounds
   $("#items").click(function () {
     sounds.startSongIntro();
@@ -125,6 +134,7 @@ $(document).ready(function () {
   });
   $('#fight').click(function () {
     sounds.mute();
+    frontEnd.showStartScreen();
   });
   $("#pokemon").click(function () {
     sounds.endStartSong();
