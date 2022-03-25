@@ -85,14 +85,14 @@ export default class FrontEndFunctions {
     $("#volume-high").css('visibility', 'visible');
   }
 
-  startToLoad() {
+  startToBattle() {
     $('#game-ui-start').hide();
-    $('#game-ui-loading').show();
-  }
-
-  loadToBattle() {
-    $('#game-ui-loading').hide();
     $('#game-ui-battle').show();
   }
+
+  // loadToBattle() {
+  //   $('#game-ui-loading').hide();
+  //   $('#game-ui-battle').show();
+  // }
 
 }

@@ -119,7 +119,7 @@ body {
   outline-style: solid;
 }
 
-#game-ui-loading {
+/* #game-ui-loading {
   grid-row-start: 2;
   margin: 1em auto;
   display: flex;
@@ -134,7 +134,7 @@ body {
   outline: 10px black;
   outline-style: solid;
   display: none;
-}
+} */
 
 .grow {
   transition: all .1s;
