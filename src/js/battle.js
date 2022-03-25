@@ -9,13 +9,7 @@ export default class Battle {
 	}
 
 	async startBattle() {
-		//this.frontEnd.hideBattleOptions();
 		this.setupPokemon();
-		//this.frontEnd.initializeBoard(this.playerPokemon, this.opposingPokemon);
-		//this.frontEnd.updateTurnSummary(`${this.playerPokemon.name} encountered a wild ${this.opposingPokemon.name}!`);
-		//this.frontEnd.playerSetHealthBar(this.playerPokemon.maxStats.hp);
-		//this.frontEnd.enemySetHealthBar(this.opposingPokemon.maxStats.hp);
-
 		this.changeTurns(true);
 	}
 
@@ -27,13 +21,12 @@ export default class Battle {
 	playerTurn() {
 		this.isPlayerTurn = true;
 		this.frontEnd.showBattleOptions();
+	}
 
-		// TODO: Handle button events for moves; these would call handleMove()
-
-		const randMove = this.playerPokemon.moves[Math.floor(Math.random() * (this.playerPokemon.moves.length - 1))];
-		this.handleMove(this.playerPokemon, this.opposingPokemon, randMove);
-
+	selectPlayerMove(move) {
+		const moveResult = this.handleMove(this.playerPokemon, this.opposingPokemon, move);
 		this.changeTurns();
+		return moveResult;
 	}
 
 	aiTurn() {
