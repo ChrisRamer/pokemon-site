@@ -57,7 +57,7 @@ function createBattleObject(playerPokemon, opposingPokemon) {
   console.log(opposingPokemon);
   console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
   //currentBattle = new Battle(playerPokemon, opposingPokemon);
-	currentBattle = new BattleUILogic(playerPokemon, opposingPokemon);
+  currentBattle = new BattleUILogic(playerPokemon, opposingPokemon);
 }
 
 
@@ -65,10 +65,10 @@ function createBattleObject(playerPokemon, opposingPokemon) {
 function pokemonCreate(pokeObject, startingLevel) {
   const timeDelay = 1000;
   let pokemonMade = new Pokemon(pokeObject, startingLevel);
-  for(let i = 0; i <= 3; i++) {
+  for (let i = 0; i <= 3; i++) {
     pokemonChangeMove(pokemonMade, i);
     setTimeout(() => {
-      if(pokemonMade.moves[i] === null){
+      if (pokemonMade.moves[i] === null) {
         pokemonChangeMove(pokemonMade, i);
       }
     }, timeDelay);
@@ -117,11 +117,19 @@ $(document).ready(function () {
       opposingPokemon = pokemonCreate(pokemonName, 1);
     });
   });
-  
+
   $("#start-button").click(function () {
-    frontEnd.hideStartScreen();
+    frontEnd.startToLoad();
   });
-  
+
+  $("#loading-screen").click(function () {
+    frontEnd.loadToBattle();
+  });
+
+  // $("#loading-text").click(function () {
+  //   frontEnd.LoadingToBattleScreen
+  // });
+
   $("#volume").click(function () {
     frontEnd.volumeControllerShow();
   });
@@ -134,7 +142,7 @@ $(document).ready(function () {
   });
   $('#fight').click(function () {
     sounds.mute();
-    frontEnd.showStartScreen();
+    frontEnd.showStartScreen
   });
   $("#pokemon").click(function () {
     sounds.endStartSong();
