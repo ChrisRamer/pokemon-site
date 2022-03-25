@@ -5,8 +5,8 @@ export default class Pokemon {
     this.experience = 0;
     this.experienceBase = bigPokemon["base_experience"];
     this.type = [];
-    this.spriteFront = bigPokemon.sprites["back_default"];
-    this.spriteBack = bigPokemon.sprites["front_default"];
+    this.spriteFront = bigPokemon.sprites["front_default"];
+    this.spriteBack = bigPokemon.sprites["back_default"];
     this.baseStats = {
       hp: bigPokemon.stats[0]["base_stat"],
       attack: bigPokemon.stats[1]["base_stat"],
@@ -64,11 +64,11 @@ export default class Pokemon {
     let statData = [];
     bigMove["stat_changes"].forEach((effect) => {
       const value = effect.change;
-      const stat = (effect.stat.name === "special-attack") ? "specialAttack" : 
+      const stat = (effect.stat.name === "special-attack") ? "specialAttack" :
       (effect.stat.name === "special-defence") ? "specialDefence" : effect.stat.name;
       statData.push({change: value, statName: stat});
     });
-    
+
     if((slotNumber === 0 || slotNumber === 1 || slotNumber === 2 || slotNumber === 3) && targetData !== null) {
       if(this.moves[slotNumber] !== null) {
         this.movesPossible.push(this.moves[slotNumber].name);
