@@ -76,4 +76,22 @@ export default class FrontEndFunctions {
 		$("#battle-option-box").css("visibility", "hidden");
 		$("#move-options").css("visibility", "hidden");
 	}
+	
+	volumeControllerShow() {
+		$("#volume").css('visibility', 'hidden');
+		$("#volume-mute").css('visibility', 'visible');
+		$("#volume-low").css('visibility', 'visible');
+		$("#volume-medium").css('visibility', 'visible');
+		$("#volume-high").css('visibility', 'visible');
+	}
+	
+	hideStartScreen() {
+		$('#start-screen').hide();
+		$('#main-battle-screen').css('visibility', 'visible');
+	}
+	
+	showStartScreen() {
+		$('#start-screen').show();
+		$('#main-battle-screen').css('visibility', 'hidden');
+	}
 }
