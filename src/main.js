@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Pokemon from './js/pokemon';
 import PokemonService from './js/pokemon-service';
-import Battle from './js/battle';
 import GameSounds from './js/audio.js';
 import BattleUILogic from "./js/battleUILogic";
 import FrontEnd from './js/frontEndFunctions';
@@ -53,11 +52,13 @@ function waitMilliseconds(time) {
 //Battle Functions
 function createBattleObject(playerPokemon, opposingPokemon) {
   // Create battle object
-  console.log(playerPokemon);
-  console.log(opposingPokemon);
   console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
+<<<<<<< HEAD
   //currentBattle = new Battle(playerPokemon, opposingPokemon);
   currentBattle = new BattleUILogic(playerPokemon, opposingPokemon);
+=======
+	currentBattle = new BattleUILogic(playerPokemon, opposingPokemon);
+>>>>>>> master
 }
 
 
@@ -126,10 +127,13 @@ $(document).ready(function () {
     frontEnd.loadToBattle();
   });
 
+<<<<<<< HEAD
   // $("#loading-text").click(function () {
   //   frontEnd.LoadingToBattleScreen
   // });
 
+=======
+>>>>>>> master
   $("#volume").click(function () {
     frontEnd.volumeControllerShow();
   });
@@ -156,4 +160,18 @@ $(document).ready(function () {
   $("#run").on("click", function () { console.log("run!"); });
   $("#pokemon").on("click", function () { console.log("party!"); });
   $("#items").on("click", function () { console.log("items!"); });
+
+	// Handle move selection
+	$("#move-1").on("click", function () {
+		currentBattle.handlePlayerMoveSelection(playerPokemon.moves[0]);
+	});
+	$("#move-2").on("click", function () {
+		currentBattle.handlePlayerMoveSelection(playerPokemon.moves[1]);
+	});
+	$("#move-3").on("click", function () {
+		currentBattle.handlePlayerMoveSelection(playerPokemon.moves[2]);
+	});
+	$("#move-4").on("click", function () {
+		currentBattle.handlePlayerMoveSelection(playerPokemon.moves[3]);
+	});
 });

@@ -23,6 +23,8 @@ export default class BattleUILogic {
 
 	// Handles a move selection during player's turn
 	handlePlayerMoveSelection(move) {
-		return this.battle.handleMove(this.playerPokemon, this.opposingPokemon, move);
+		if (!this.battle.battleFinished) {
+			this.battle.selectPlayerMove(move);
+		}
 	}
 }
