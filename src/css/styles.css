@@ -86,7 +86,7 @@ body {
   padding: auto;
 }
 
-#game-ui-battle {
+.game-ui-style {
   grid-row-start: 2;
   margin: 1em auto;
   display: flex;
@@ -101,6 +101,22 @@ body {
   outline: 10px black;
   outline-style: solid;
 }
+
+/* #game-ui-battle {
+  grid-row-start: 2;
+  margin: 1em auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(90, 84, 84);
+  width: 700px;
+  height: 500px;
+  border: 10px rgb(255, 87, 75);
+  border-radius: 5px;
+  border-style: solid;
+  outline: 10px black;
+  outline-style: solid;
+} */
 
 #main-battle{
   display: none;
@@ -111,7 +127,7 @@ body {
 }
 
 
-#game-ui-start {
+/* #game-ui-start {
   grid-row-start: 2;
   margin: 1em auto;
   display: flex;
@@ -125,9 +141,9 @@ body {
   border-style: solid;
   outline: 10px black;
   outline-style: solid;
-}
+} */
 
-#game-ui-loading {
+/* #game-ui-loading {
   grid-row-start: 2;
   margin: 1em auto;
   display: flex;
@@ -141,7 +157,7 @@ body {
   border-style: solid;
   outline: 10px black;
   outline-style: solid;
-}
+} */
 
 .grow {
   transition: all .1s;

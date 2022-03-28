@@ -122,6 +122,8 @@ $(document).ready(function () {
 
   $("#volume").click(function () {
     frontEnd.volumeControllerShow();
+    frontEnd.resetEnemyHpBar();
+    frontEnd.resetPlayerHpBar();
   });
 
   $("#items").click(function () {
