@@ -53,7 +53,8 @@ function waitMilliseconds(time) {
 function createBattleObject(playerPokemon, opposingPokemon) {
   // Create battle object
   console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
-	currentBattle = new BattleUILogic(playerPokemon, opposingPokemon);
+  //currentBattle = new Battle(playerPokemon, opposingPokemon);
+  currentBattle = new BattleUILogic(playerPokemon, opposingPokemon);
 }
 
 
@@ -61,10 +62,10 @@ function createBattleObject(playerPokemon, opposingPokemon) {
 function pokemonCreate(pokeObject, startingLevel) {
   const timeDelay = 1000;
   let pokemonMade = new Pokemon(pokeObject, startingLevel);
-  for(let i = 0; i <= 3; i++) {
+  for (let i = 0; i <= 3; i++) {
     pokemonChangeMove(pokemonMade, i);
     setTimeout(() => {
-      if(pokemonMade.moves[i] === null){
+      if (pokemonMade.moves[i] === null) {
         pokemonChangeMove(pokemonMade, i);
       }
     }, timeDelay);
@@ -115,8 +116,16 @@ $(document).ready(function () {
   });
 
   $("#start-button").click(function () {
-    frontEnd.hideStartScreen();
+    frontEnd.startToBattle();
   });
+
+  // $("#loading-screen").click(function () {
+  //   frontEnd.loadToBattle();
+  // });
+
+  // $("#loading-text").click(function () {
+  //   frontEnd.LoadingToBattleScreen
+  // });
 
   $("#volume").click(function () {
     frontEnd.volumeControllerShow();
@@ -130,7 +139,7 @@ $(document).ready(function () {
   });
   $('#fight').click(function () {
     sounds.mute();
-    frontEnd.showStartScreen();
+    // frontEnd.showStartScreen
   });
   $("#pokemon").click(function () {
     sounds.endStartSong();
@@ -145,17 +154,17 @@ $(document).ready(function () {
   $("#pokemon").on("click", function () { console.log("party!"); });
   $("#items").on("click", function () { console.log("items!"); });
 
-	// Handle move selection
-	$("#move-1").on("click", function () {
-		currentBattle.handlePlayerMoveSelection(playerPokemon.moves[0]);
-	});
-	$("#move-2").on("click", function () {
-		currentBattle.handlePlayerMoveSelection(playerPokemon.moves[1]);
-	});
-	$("#move-3").on("click", function () {
-		currentBattle.handlePlayerMoveSelection(playerPokemon.moves[2]);
-	});
-	$("#move-4").on("click", function () {
-		currentBattle.handlePlayerMoveSelection(playerPokemon.moves[3]);
-	});
+  // Handle move selection
+  $("#move-1").on("click", function () {
+    currentBattle.handlePlayerMoveSelection(playerPokemon.moves[0]);
+  });
+  $("#move-2").on("click", function () {
+    currentBattle.handlePlayerMoveSelection(playerPokemon.moves[1]);
+  });
+  $("#move-3").on("click", function () {
+    currentBattle.handlePlayerMoveSelection(playerPokemon.moves[2]);
+  });
+  $("#move-4").on("click", function () {
+    currentBattle.handlePlayerMoveSelection(playerPokemon.moves[3]);
+  });
 });
