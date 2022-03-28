@@ -17,23 +17,14 @@ async function makePokemonCall(name) {
   const response = await PokemonService.getPokemon(name);
   return response;
 }
-// async function randomPokemonCall(region) {
-//   const response = await PokemonService.randomPokemon(region);
-//   return response;
-// }
 async function getMoveData(name) {
   const response = await PokemonService.getMove(name);
   return response;
 }
-// async function getTypeData(type) {
-//   const response = await PokemonService.getType(type);
-//   return response;
-// }
-
 
 //Random Functions
 function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * ((max - min) + 1) + min); //Can reach max
+  return Math.floor(Math.random() * ((max - min) + 1) + min);
 }
 
 function capitalizeFirst(string) {
@@ -52,8 +43,6 @@ function waitMilliseconds(time) {
 //Battle Functions
 function createBattleObject(playerPokemon, opposingPokemon) {
   // Create battle object
-  console.log(`${capitalizeFirst(playerPokemon["name"])} entered fight with ${capitalizeFirst(opposingPokemon["name"])}!`);
-  //currentBattle = new Battle(playerPokemon, opposingPokemon);
   currentBattle = new BattleUILogic(playerPokemon, opposingPokemon);
 }
 
@@ -62,7 +51,7 @@ function createBattleObject(playerPokemon, opposingPokemon) {
 function pokemonCreate(pokeObject, startingLevel) {
   const timeDelay = 1000;
   let pokemonMade = new Pokemon(pokeObject, startingLevel);
-  for (let i = 0; i <= 3; i++) {
+  for (let i = 0; i <= 3; i++) { //move to pokemonChangeMove
     pokemonChangeMove(pokemonMade, i);
     setTimeout(() => {
       if (pokemonMade.moves[i] === null) {
@@ -70,6 +59,7 @@ function pokemonCreate(pokeObject, startingLevel) {
       }
     }, timeDelay);
   }
+  pokemonMade.name = capitalizeFirst(pokemonMade.name);
   return pokemonMade;
 }
 function pokemonChangeMove(pokemonToChange, slot) {
@@ -120,10 +110,13 @@ $(document).ready(function () {
     frontEnd.battleShow();
   });
 
+<<<<<<< HEAD
   $("#run").click(function () {
     sounds.battleLoop.play();
   });
 
+=======
+>>>>>>> master
   $("#volume").click(function () {
     frontEnd.volumeControllerShow();
     frontEnd.resetEnemyHpBar();
