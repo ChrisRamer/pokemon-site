@@ -100,8 +100,16 @@ body {
   border-style: solid;
   outline: 10px black;
   outline-style: solid;
+}
+
+#main-battle{
   display: none;
 }
+
+#main-load {
+  display: none;
+}
+
 
 #game-ui-start {
   grid-row-start: 2;
@@ -133,7 +141,6 @@ body {
   border-style: solid;
   outline: 10px black;
   outline-style: solid;
-  display: none;
 }
 
 .grow {

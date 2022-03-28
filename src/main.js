@@ -116,37 +116,21 @@ $(document).ready(function () {
   });
 
   $("#start-button").click(function () {
-    frontEnd.startToBattle();
+    frontEnd.startHide();
+    frontEnd.battleShow();
   });
-
-  // $("#loading-screen").click(function () {
-  //   frontEnd.loadToBattle();
-  // });
-
-  // $("#loading-text").click(function () {
-  //   frontEnd.LoadingToBattleScreen
-  // });
 
   $("#volume").click(function () {
     frontEnd.volumeControllerShow();
   });
-  //for testing new sounds
+
   $("#items").click(function () {
-    sounds.startSongIntro();
-  });
-  $("#run").click(function () {
-    sounds.battleSongIntro();
-  });
-  $('#fight').click(function () {
-    sounds.mute();
-    frontEnd.battleToLoad();
-  });
-  $("#pokemon").click(function () {
-    sounds.endStartSong();
-    sounds.endBattleSong();
+    frontEnd.battleHide();
+    frontEnd.loadShow();
   });
   $("#loading-text").click(function () {
-    frontEnd.loadToBattle();
+    frontEnd.loadHide();
+    frontEnd.battleShow();
   });
   //end of test/ change and or remove above
 
