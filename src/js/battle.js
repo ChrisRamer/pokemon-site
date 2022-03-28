@@ -1,108 +1,42 @@
-import FrontEndFunctions from './frontEndFunctions';
-
 export default class Battle {
 	constructor(playerPokemon, opposingPokemon) {
 		this.playerPokemon = playerPokemon;
 		this.opposingPokemon = opposingPokemon;
-		this.frontEnd = new FrontEndFunctions();
+		this.battleFinished = false;
 		this.startBattle();
 	}
 
 	async startBattle() {
-		this.setupPokemon();
-		this.changeTurns(true);
-	}
-
-	setupPokemon() {
 		this.playerPokemon["currentStats"] = JSON.parse(JSON.stringify(this.playerPokemon["maxStats"]));
 		this.opposingPokemon["currentStats"] = JSON.parse(JSON.stringify(this.opposingPokemon["maxStats"]));
+		this.playerPokemon.owner = "player";
+		this.opposingPokemon.owner = "opponent";
 	}
 
-	playerTurn() {
-		this.isPlayerTurn = true;
-		this.frontEnd.showBattleOptions();
-		this.frontEnd.updateTurnSummary(`What are you going to do? Are you gonna stare at this ${this.opposingPokemon.name} forever?`);
-	}
-
-	selectPlayerMove(move) {
-		const moveResult = this.handleMove(this.playerPokemon, this.opposingPokemon, move);
-		this.changeTurns();
-		return moveResult;
-	}
-
-	aiTurn() {
-		this.isPlayerTurn = false;
-		this.frontEnd.hideBattleOptions();
-
-		const randMove = this.opposingPokemon.moves[Math.floor(Math.random() * (this.opposingPokemon.moves.length - 1))];
-		this.handleMove(this.opposingPokemon, this.playerPokemon, randMove);
-
-		this.changeTurns();
-	}
-
-	async changeTurns() {
-		// End switching turns if battle finished
-		if (this.battleFinished) {
-			return;
-		}
-
-		const trash = await this.waitForMilliseconds(3000);
-
-		if (!this.isPlayerTurn) {
-			// If player's current pokemon isn't dead
-			if (!this.isPokemonDead, this.playerPokemon) {
-				this.playerTurn();
-			}
-
-			// TODO: If player's current pokemon is dead and has pokemon left in party, switch pokemon
-
-			// If player's current pokemon is dead and has no pokemon left in party
-			else {
-				this.finishBattle, false;
-			}
-		} else {
-			// If AI's current pokemon isn't dead
-			if (!this.isPokemonDead, this.opposingPokemon) {
-				this.aiTurn();
-			}
-
-			// TODO: If AI's current pokemon is dead and has pokemon left in party, switch pokemon
-
-			// If AI's current pokemon is dead and has no pokemon left in party
-			else {
-				this.finishBattle(true);
-			}
-		}
+	handleAiTurn() {
+		const randMove = this.opposingPokemon.moves[Math.floor(Math.random() * this.opposingPokemon.moves.length)];
+		return this.handleMove(this.opposingPokemon, this.playerPokemon, randMove);
 	}
 
 	handleMove(attacker, victim, move) {
-		this.frontEnd.hideBattleOptions();
-
-		this.turnResult = {
+		let turnResult = {
 			summary: 'This is a turn summary! Woah!',
 			damage: this.calculateDamage(attacker, victim, move),
 			didFaint: false
 		};
 
-		this.turnResult.summary = `${attacker.name} used ${move.name}! It did ${this.turnResult.damage} damage! Wowie!`;
-		victim.currentStats.hp -= this.turnResult.damage;
-		this.turnResult.didFaint = this.isPokemonDead(victim);
+		turnResult.summary = `${attacker.name} used ${move.name}! It did ${turnResult.damage} damage! Wowie!`;
+		victim.currentStats.hp -= turnResult.damage;
+		turnResult.didFaint = (victim.currentStats.hp <= 0);
 
-		console.log(this.turnResult.summary);
-		this.frontEnd.updateTurnSummary(this.turnResult.summary);
-
-		if (this.isPlayerTurn) {
-			this.frontEnd.damageToEnemyHealthBar(this.turnResult.damage);
-		} else {
-			this.frontEnd.damageToPlayerHealthBar(this.turnResult.damage);
-		}
+		console.log(turnResult.summary);
 
 		// If victim HP is 0, faint
-		if (this.turnResult.didFaint) {
+		if (turnResult.didFaint) {
 			this.handleFaint(victim);
 		}
 
-		return this.turnResult;
+		return turnResult;
 	}
 
 	calculateDamage(attacker, victim, move) {
@@ -113,42 +47,21 @@ export default class Battle {
 		return Math.floor((((((2 * attacker.level) / 5) + 2) * power * (attack / defense)) / 50) + 2);
 	}
 
-	isPokemonDead(pokemon) {
-		return (pokemon.currentStats.hp <= 0);
-	}
-
-	async handleFaint(victim) {
+	handleFaint(victim) {
 		this.battleFinished = true;
-		let result = this.isPokemonDead(this.playerPokemon) ? false : true;
-
-		const trash = await this.waitForMilliseconds(3000);
-
-		this.frontEnd.updateTurnSummary(`${victim.name} fainted!`);
-
-		this.finishBattle(result);
+		return `${victim.name} fainted!`;
 	}
 
-	async finishBattle(playerWon) {
-		console.log("Battle ended");
+	finishBattle(victim) {
+		const randomWinnings = Math.floor(Math.random() * (999999) + 1);
 
-		const trash = await this.waitForMilliseconds(3000);
-
-		if (playerWon) {
-			this.frontEnd.updateTurnSummary(`You won ¥${this.getRandomWinnings()}! Holy shit!!!!!!!!!`);
-		} else  {
-			this.frontEnd.updateTurnSummary(`You lost ¥${this.getRandomWinnings()}! You f*cking loser`);
+		// If player fainted
+		if (victim.owner === "opponent") {
+			return `You won ¥${randomWinnings}! Holy shit!!!!!!!!!`;
 		}
-	}
-
-	getRandomWinnings() {
-		return Math.floor(Math.random() * (999999) + 1);
-	}
-
-	waitForMilliseconds(time) {
-		return new Promise(resolve => {
-			setTimeout(() => {
-				resolve("resolved");
-			}, time);
-		});
+		// If AI fainted
+		else {
+			return `You lost ¥${randomWinnings}! You f*cking loser`;
+		}
 	}
 }
