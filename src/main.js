@@ -120,6 +120,10 @@ $(document).ready(function () {
     frontEnd.battleShow();
   });
 
+  $("#run").click(function () {
+    sounds.battleLoop.play();
+  });
+
   $("#volume").click(function () {
     frontEnd.volumeControllerShow();
     frontEnd.resetEnemyHpBar();
@@ -130,12 +134,33 @@ $(document).ready(function () {
     frontEnd.battleHide();
     frontEnd.loadShow();
   });
+
   $("#loading-text").click(function () {
     frontEnd.loadHide();
     frontEnd.battleShow();
   });
-  //end of test/ change and or remove above
 
+  $("#volume-mute").click(function () {
+    sounds.mute();
+    frontEnd.volumeControllerHide();
+  });
+
+  $("#volume-low").click(function () {
+    sounds.setVolume();
+    frontEnd.volumeControllerHide();
+  });
+
+  $("#volume-medium").click(function () {
+    sounds.setVolumeMedium();
+    frontEnd.volumeControllerHide();
+  });
+
+  $("#volume-high").click(function () {
+    sounds.setVolumeHigh();
+    frontEnd.volumeControllerHide();
+  });
+
+  //end of test/ change and or remove above
   // fightToMoves();
   $("#header-image").on("click", function () { createBattleObject(playerPokemon, opposingPokemon); });
   $("#fight").on("click", function () { console.log("fight!"); });

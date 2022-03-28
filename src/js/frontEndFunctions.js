@@ -103,6 +103,14 @@ export default class FrontEndFunctions {
     $("#volume-high").css('visibility', 'visible');
   }
 
+  volumeControllerHide() {
+    $("#volume").css('visibility', 'visible');
+    $("#volume-mute").css('visibility', 'hidden');
+    $("#volume-low").css('visibility', 'hidden');
+    $("#volume-medium").css('visibility', 'hidden');
+    $("#volume-high").css('visibility', 'hidden');
+  }
+
   startShow() {
     $('#main-start').show();
   }

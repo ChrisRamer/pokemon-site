@@ -92,6 +92,54 @@ export default class GameSounds {
     this.grow.volume = 0.02;
   }
 
+  setVolumeMedium() {
+    this.attack1.volume = 0.04;
+    this.attack2.volume = 0.04;
+    this.attack3.volume = 0.04;
+    this.attack4.volume = 0.04;
+    this.attack5.volume = 0.04;
+    this.attack6.volume = 0.04;
+    this.attack7.volume = 0.04;
+    this.attack8.volume = 0.04;
+    this.blip.volume = 0.04;
+    this.battleIntro.volume = 0.04;
+    this.battleLoop.volume = 0.04;
+    this.battleEnd.volume = 0.04;
+    this.hurryIntro.volume = 0.04;
+    this.hurryEnd.volume = 0.04;
+    this.hurryLoop.volume = 0.04;
+    this.save.volume = 0.04;
+    this.victory.volume = 0.04;
+    this.trainer.volume = 0.04;
+    this.loss.volume = 0.04;
+    this.coin.volume = 0.04;
+    this.grow.volume = 0.04;
+  }
+
+  setVolumeHigh() {
+    this.attack1.volume = 0.06;
+    this.attack2.volume = 0.06;
+    this.attack3.volume = 0.06;
+    this.attack4.volume = 0.06;
+    this.attack5.volume = 0.06;
+    this.attack6.volume = 0.06;
+    this.attack7.volume = 0.06;
+    this.attack8.volume = 0.06;
+    this.blip.volume = 0.06;
+    this.battleIntro.volume = 0.06;
+    this.battleLoop.volume = 0.06;
+    this.battleEnd.volume = 0.06;
+    this.hurryIntro.volume = 0.06;
+    this.hurryEnd.volume = 0.06;
+    this.hurryLoop.volume = 0.06;
+    this.save.volume = 0.06;
+    this.victory.volume = 0.06;
+    this.trainer.volume = 0.06;
+    this.loss.volume = 0.06;
+    this.coin.volume = 0.06;
+    this.grow.volume = 0.06;
+  }
+
   mute() {
     this.attack1.volume = 0.0;
     this.attack2.volume = 0.0;
