@@ -90,9 +90,14 @@ export default class FrontEndFunctions {
     $('#game-ui-battle').show();
   }
 
-  // loadToBattle() {
-  //   $('#game-ui-loading').hide();
-  //   $('#game-ui-battle').show();
-  // }
+  battleToLoad() {
+    $('#game-ui-loading').show();
+    $('#game-ui-battle').hide();
+  }
+
+  loadToBattle() {
+    $('#game-ui-loading').hide();
+    $('#game-ui-battle').show();
+  }
 
 }

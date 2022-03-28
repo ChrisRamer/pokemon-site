@@ -139,11 +139,14 @@ $(document).ready(function () {
   });
   $('#fight').click(function () {
     sounds.mute();
-    // frontEnd.showStartScreen
+    frontEnd.battleToLoad();
   });
   $("#pokemon").click(function () {
     sounds.endStartSong();
     sounds.endBattleSong();
+  });
+  $("#loading-text").click(function () {
+    frontEnd.loadToBattle();
   });
   //end of test/ change and or remove above
 
