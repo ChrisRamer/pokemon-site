@@ -110,13 +110,10 @@ $(document).ready(function () {
     frontEnd.battleShow();
   });
 
-<<<<<<< HEAD
   $("#run").click(function () {
     sounds.battleLoop.play();
   });
 
-=======
->>>>>>> master
   $("#volume").click(function () {
     frontEnd.volumeControllerShow();
     frontEnd.resetEnemyHpBar();
