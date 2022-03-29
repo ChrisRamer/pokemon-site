@@ -15,104 +15,111 @@
       <p>Fight and catch pokemon!</p>
     </div>
 
-    <div id="game-ui-start">
-      <div id="start-screen" class="screen-boundary">
-        <div id="start-button" class="battle-buttons">
-          <p class="grow hover">Start</p>
+    <div id="main-start">
+      <div class="game-ui-style">
+        <div id="start-screen" class="screen-boundary">
+          <div id="start-button" class="battle-buttons">
+            <p class="grow hover">Start</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- <div id="game-ui-loading">
-      <div id="loading-screen" class="screen-boundary">
-        <div id="loading-boundry">
-          <p id="loading-text">...Loading...</p>
+    <div id="main-load">
+      <div class="game-ui-style">
+        <div id="loading-screen" class="screen-boundary">
+          <div id="loading-boundry">
+            <p id="loading-text">...Loading...</p>
+          </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
-    <div id="game-ui-battle">
-      <div id="main-battle-screen" class="screen-boundary">
-        <div id="upper-screen" class="auto-size">
-          <div id="enemy-sprite-area" class="auto-size">
-            <div id="sprite-1">
-              <img class="sprite-size"
-                src="https://64.media.tumblr.com/d018a6132e6cc3529bd1a4df6a396f16/99035adb2db7532d-b5/s128x128u_c1/65d963266cd2ab41bf7b41dda5a7efe769be58fb.jpg"
-                alt="opponent">
+    <div id="main-battle">
+      <div class="game-ui-style">
+        <div id="main-battle-screen" class="screen-boundary">
+          <div id="upper-screen" class="auto-size">
+            <div id="enemy-sprite-area" class="auto-size">
+              <div id="sprite-1">
+                <img class="sprite-size"
+                  src="https://64.media.tumblr.com/d018a6132e6cc3529bd1a4df6a396f16/99035adb2db7532d-b5/s128x128u_c1/65d963266cd2ab41bf7b41dda5a7efe769be58fb.jpg"
+                  alt="opponent">
+              </div>
             </div>
-          </div>
 
-          <div id="enemy-hp-area" class="auto-size">
-            <div id="hp-bar-placement-1">
-              <p id="enemy-name-change"><span id="enemy-poke-name"></span>plushiemon</p>
-              <p id="hit-point-text">HP/</p>
-              <div id="inner-hp-bar-1" data-total="100" data-value="100">
-                <div id="hp-enemy-container">
-                  <div id="enemy-bar-visual">
+            <div id="enemy-hp-area" class="auto-size">
+              <div id="hp-bar-placement-1">
+                <p id="enemy-name-change"><span id="enemy-poke-name"></span>plushiemon</p>
+                <p id="hit-point-text">HP/</p>
+                <div id="inner-hp-bar-1" data-total="100" data-value="100">
+                  <div id="hp-enemy-container">
+                    <div id="enemy-bar-visual">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="player-sprite-area" class="auto-size">
+              <div id="sprite-2">
+                <img class="sprite-size" src="https://cdn.pixabay.com/photo/2020/05/11/19/59/zombie-5160026_960_720.png"
+                  alt="random player pokemon">
+              </div>
+            </div>
+
+            <div id="player-hp-area" class="auto-size">
+              <div id="hp-bar-placement-2">
+                <p id="player-name-change"><span id="player-poke-name"></span>zombiechu</p>
+                <p id="hit-point-text-2">HP/</p>
+                <div id="inner-hp-bar-2" data-total="" data-value="">
+                  <!-- both data and value need to be the same as pokemon hp = hp bar having same number as pokemon -->
+                  <div id="hp-player-container">
+                    <div id="player-bar-visual"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div id="player-sprite-area" class="auto-size">
-            <div id="sprite-2">
-              <img class="sprite-size" src="https://cdn.pixabay.com/photo/2020/05/11/19/59/zombie-5160026_960_720.png"
-                alt="random player pokemon">
-            </div>
-          </div>
-
-          <div id="player-hp-area" class="auto-size">
-            <div id="hp-bar-placement-2">
-              <p id="player-name-change"><span id="player-poke-name"></span>zombiechu</p>
-              <p id="hit-point-text-2">HP/</p>
-              <div id="inner-hp-bar-2" data-total="" data-value="">
-                <!-- both data and value need to be the same as pokemon hp = hp bar having same number as pokemon -->
-                <div id="hp-player-container">
-                  <div id="player-bar-visual"></div>
-                </div>
+          <div id="lower-screen" class="auto-size">
+            <div id="battle-option-box" class="auto-size">
+              <div id="fight" class="battle-buttons">
+                <p class="grow hover">Fight</p>
+              </div>
+              <div id="run" class="battle-buttons">
+                <p class="grow hover">Run</p>
+              </div>
+              <div id="pokemon" class="battle-buttons">
+                <p class="grow hover">Pokemon</p>
+              </div>
+              <div id="items" class="battle-buttons">
+                <p class="grow hover">Items</p>
               </div>
             </div>
+            <div id="move-options" class="auto-size">
+              <div id="move-1" class="battle-buttons">
+                <p class="grow hover"><span id="api-move-1"></span></p>
+              </div>
+              <div id="move-2" class="battle-buttons">
+                <p class="grow hover"><span id="api-move-2"></span></p>
+              </div>
+              <div id="move-3" class="battle-buttons">
+                <p class="grow hover"><span id="api-move-3"></span></p>
+              </div>
+              <div id="move-4" class="battle-buttons">
+                <p class="grow hover"><span id="api-move-4"></span></p>
+              </div>
+            </div>
+
+            <div id="battle-text-box" class="auto-size">
+              <p><span id="battle-text-control"></span></p>
+            </div>
           </div>
         </div>
-
-        <div id="lower-screen" class="auto-size">
-          <div id="battle-option-box" class="auto-size">
-            <div id="fight" class="battle-buttons">
-              <p class="grow hover">Fight</p>
-            </div>
-            <div id="run" class="battle-buttons">
-              <p class="grow hover">Run</p>
-            </div>
-            <div id="pokemon" class="battle-buttons">
-              <p class="grow hover">Pokemon</p>
-            </div>
-            <div id="items" class="battle-buttons">
-              <p class="grow hover">Items</p>
-            </div>
-          </div>
-          <div id="move-options" class="auto-size">
-            <div id="move-1" class="battle-buttons">
-              <p class="grow hover"><span id="api-move-1"></span></p>
-            </div>
-            <div id="move-2" class="battle-buttons">
-              <p class="grow hover"><span id="api-move-2"></span></p>
-            </div>
-            <div id="move-3" class="battle-buttons">
-              <p class="grow hover"><span id="api-move-3"></span></p>
-            </div>
-            <div id="move-4" class="battle-buttons">
-              <p class="grow hover"><span id="api-move-4"></span></p>
-            </div>
-          </div>
-
-          <div id="battle-text-box" class="auto-size">
-            <p><span id="battle-text-control"></span></p>
-          </div>
-        </div>
-
       </div>
     </div>
+
+
     <div id="footer">
       <div id="footer-container">
         <div id="menu-area">

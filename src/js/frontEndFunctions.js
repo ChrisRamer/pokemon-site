@@ -14,7 +14,7 @@ export default class FrontEndFunctions {
     const playerHpBar = $("#inner-hp-bar-2");
     const bar = playerHpBar.find("#hp-player-container");
     const hit = playerHpBar.find("#player-bar-visual");
-    const damageFromEnemy = damagePlayer // damage numbers
+    const damageFromEnemy = damagePlayer; // damage numbers
     const totalBarHp = playerHpBar.data('total');
     const value = playerHpBar.data("value");
     const hpDamage = damageFromEnemy;
@@ -38,7 +38,7 @@ export default class FrontEndFunctions {
     const enemyHpBar = $("#inner-hp-bar-1");
     const bar = enemyHpBar.find("#hp-enemy-container");
     const hit = enemyHpBar.find("#enemy-bar-visual");
-    const damageFromPlayer = damageEnemy
+    const damageFromPlayer = damageEnemy;
     const totalBarHp = enemyHpBar.data('total');
     const value = enemyHpBar.data("value");
     const hpDamage = damageFromPlayer;
@@ -48,6 +48,24 @@ export default class FrontEndFunctions {
     hit.css('width', barWidth + "%"); //remaining bar width
     enemyHpBar.data('value', newHpValue);
     bar.css('hit', hitBarWidth + "%");
+  }
+
+  resetPlayerHpBar() {
+    const playerHpBar = $("#inner-hp-bar-2");
+    const bar = playerHpBar.find("#hp-player-container");
+    const hit = playerHpBar.find("#player-bar-visual");
+    playerHpBar.data('value', playerHpBar.data('total'));
+    hit.css({ 'width': '100%' });
+    bar.css('width', '100%');
+  }
+
+  resetEnemyHpBar() {
+    const enemyHpBar = $("#inner-hp-bar-1");
+    const bar = enemyHpBar.find("#hp-enemy-container");
+    const hit = enemyHpBar.find("#enemy-bar-visual");
+    enemyHpBar.data('value', enemyHpBar.data('total'));
+    hit.css({ 'width': '100%' });
+    bar.css('width', '100%');
   }
 
   initializeBoard(playerPokemon, enemyPokemon) {
@@ -85,14 +103,36 @@ export default class FrontEndFunctions {
     $("#volume-high").css('visibility', 'visible');
   }
 
-  startToBattle() {
-    $('#game-ui-start').hide();
-    $('#game-ui-battle').show();
+  volumeControllerHide() {
+    $("#volume").css('visibility', 'visible');
+    $("#volume-mute").css('visibility', 'hidden');
+    $("#volume-low").css('visibility', 'hidden');
+    $("#volume-medium").css('visibility', 'hidden');
+    $("#volume-high").css('visibility', 'hidden');
   }
 
-  // loadToBattle() {
-  //   $('#game-ui-loading').hide();
-  //   $('#game-ui-battle').show();
-  // }
+  startShow() {
+    $('#main-start').show();
+  }
+
+  startHide() {
+    $('#main-start').hide();
+  }
+
+  battleShow() {
+    $('#main-battle').show();
+  }
+
+  battleHide() {
+    $('#main-battle').hide();
+  }
+
+  loadHide() {
+    $('#main-load').hide();
+  }
+
+  loadShow() {
+    $('#main-load').show();
+  }
 
 }
