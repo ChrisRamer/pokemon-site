@@ -5,8 +5,12 @@
 * [Tristen Everett](https://github.com/TJEverett)
 * [Lucian Miller](https://github.com/lucianmiller)
 * [Kiernan Beattie](https://github.com/kiernan2)
-* Geoffry Millner(geoff.millner22@gmail.com)
+* [Geoffry Millner](https://github.com/geomio)
 * [Chris Ramer](https://github.com/ChrisRamer)
+
+## Description
+
+Mockup Pokemon battle system using data from the [Pokemon API](https://pokeapi.co/). Has sprites and sounds.
 
 ## Technologies Used
 
@@ -25,8 +29,6 @@
 2) Move to "Main" directory with terminal
 3) Run `npm install` to install necessary packages
 4) Run `npm run start` to open site on your localhost
-
-## Plan
 
 ### Minimum requirements:
 
@@ -53,52 +55,13 @@ Battle AI difficulty
 “Hard mode” where pokemon is gone when it faints in battle
 ```
 
-### Battle system notes:
-
-```Player selects a pokemon to take into battle (select 1 from party)
-Move selection menu for the pokemon when it’s their turn
-Moves take stats, PP, types, and effects into account (don’t have to be accurate to games)
-```
-
-### AI’s turn:
-
-```Draws random move for its pokemon (pokemon & level is also selected at random; have level be within reason to player’s level)
-Order of pokemon attacks is based on speed
-When pokemon faints, battle ends (stretch goal of switching pokemon if parties are a thing)
-```
-
-### Catching pokemon notes:
-
-```Get random pokemon (no battle for it) and starts at level 5
-Gets 4 random moves
-Player gets choice to keep or discard pokemon
-Only allow catching if 5 pokemon or less in party
-```
-
-### Leveling notes:
-
-```AI and player pokemon stats are +1 to base stats for each level
-Evolutions requiring holding an item are ignored, evolve without item for MVP
-```
-
-### Front-end notes: Party menu:
-
-```Select current pokemon from party of 6, opens a page that shows details on selected pokemon, has button for discarding the pokemon Party menu:
-Each pokemon in main menu has a toggle for it being selected pokemon for use in battles Battle system:
-Battle backgrounds & pokemon sprites, text for current action (eg. “Pikachu used Thunder”) in a log, buttons for pokemon’s moves when it’s their turn, HP (numbers or bars)
-```
-
 ## Known Bugs / Limitations
 
 * Turns do not take pokemon speed or move priority into consideration
 * Pokemon moves have unused PP, meaning a move can be used an unlimited number of times
 * Pokemon Type advantages not taken into acount
-* "Fight", "Pokemon", "Items", and "Run" buttons do not have function yet
-* Start of turn for player starts them in move selection instead of action selection for buttons
-* User has to reload page to get different pokemon to fight
-* User has to wait about 3 to 5 seconds after page is loaded before initiating a battle
-* Battle is started by clicking on logo instead of the Start button
-* Clicking on logo before clicking start button starts battle but doesn't move away from start screen
+* "Pokemon", and "Items" buttons do not have function yet
+* Healthbars don't always show correct health percentage
 
 ### License
 

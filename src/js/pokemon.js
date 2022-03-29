@@ -85,7 +85,9 @@ export default class Pokemon {
         type: bigMove.type.name,
         class: bigMove["damage_class"].name
       };
+      return Promise.resolve("succeed");
     }
+    return Promise.resolve("fail");
   }
 }
 

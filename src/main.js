@@ -41,33 +41,32 @@ function waitMilliseconds(time) {
 
 
 //Battle Functions
-function createBattleObject(playerPokemon, opposingPokemon) {
+function createBattleObject(playerPokemon, opposingPokemon, sounds) {
   // Create battle object
-  currentBattle = new BattleUILogic(playerPokemon, opposingPokemon);
+  currentBattle = new BattleUILogic(playerPokemon, opposingPokemon, sounds);
 }
 
 
 //Pokemon Functions
 function pokemonCreate(pokeObject, startingLevel) {
-  const timeDelay = 1000;
   let pokemonMade = new Pokemon(pokeObject, startingLevel);
   for (let i = 0; i <= 3; i++) { //move to pokemonChangeMove
     pokemonChangeMove(pokemonMade, i);
-    setTimeout(() => {
-      if (pokemonMade.moves[i] === null) {
-        pokemonChangeMove(pokemonMade, i);
-      }
-    }, timeDelay);
   }
   pokemonMade.name = capitalizeFirst(pokemonMade.name);
   return pokemonMade;
 }
+
 function pokemonChangeMove(pokemonToChange, slot) {
   let randNum = getRandomNumber(0, pokemonToChange.movesPossible.length - 1);
   let moveName = pokemonToChange.movesPossible[randNum];
   pokemonToChange.movesPossible.splice(randNum, 1);
   getMoveData(moveName).then((bigMove) => {
-    pokemonToChange.changeMove(bigMove, slot);
+    pokemonToChange.changeMove(bigMove, slot).then((result) => {
+      if (result === "fail" && (slot === 0 || slot === 1 || slot === 2 || slot === 3)) {
+        pokemonChangeMove(pokemonToChange, slot);
+      }
+    });
   });
 }
 
@@ -76,7 +75,8 @@ let currentBattle;
 let pokemonList = [];
 let playerPokemon = {};
 let opposingPokemon = {};
-
+let frontEnd = {};
+let sounds = {};
 
 //Initialize variables
 makePokedexCall(1).then((response) => {
@@ -91,72 +91,69 @@ makePokedexCall(1).then((response) => {
 
 //Document Loaded
 $(document).ready(function () {
-  const frontEnd = new FrontEnd();
-  const sounds = new GameSounds();
+  frontEnd = new FrontEnd();
+  sounds = new GameSounds();
   sounds.setVolume();
-  waitMilliseconds(1000).then(() => {
-    makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
-      playerPokemon = pokemonCreate(pokemonName, 1);
-    });
-  });
-  waitMilliseconds(1000).then(() => {
-    makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
-      opposingPokemon = pokemonCreate(pokemonName, 1);
-    });
-  });
-
-  $("#start-button").click(function () {
+  sounds.startSongIntro();
+  $("#start-button").on("click", function () {
     frontEnd.startHide();
-    frontEnd.battleShow();
+    frontEnd.loadShow();
+    waitMilliseconds(1000).then(() => {
+      makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
+        playerPokemon = pokemonCreate(pokemonName, getRandomNumber(7, 13));
+      });
+    });
+    waitMilliseconds(1000).then(() => {
+      makePokemonCall(getRandomNumber(1, pokemonList.length)).then((pokemonName) => {
+        opposingPokemon = pokemonCreate(pokemonName, getRandomNumber(7, 13));
+      });
+    });
+    waitMilliseconds(5000).then(() => {
+      createBattleObject(playerPokemon, opposingPokemon, sounds);
+      frontEnd.loadHide();
+      frontEnd.battleShow();
+      sounds.stopMainSongs();
+      sounds.battleSongIntro();
+    });
   });
 
-  $("#run").click(function () {
-    sounds.battleLoop.play();
-  });
-
-  $("#volume").click(function () {
+  $("#volume").on("click", function () {
     frontEnd.volumeControllerShow();
     frontEnd.resetEnemyHpBar();
     frontEnd.resetPlayerHpBar();
   });
 
-  $("#items").click(function () {
-    frontEnd.battleHide();
-    frontEnd.loadShow();
-  });
-
-  $("#loading-text").click(function () {
-    frontEnd.loadHide();
-    frontEnd.battleShow();
-  });
-
-  $("#volume-mute").click(function () {
+  $("#volume-mute").on("click", function () {
     sounds.mute();
     frontEnd.volumeControllerHide();
   });
 
-  $("#volume-low").click(function () {
+  $("#volume-low").on("click", function () {
     sounds.setVolume();
     frontEnd.volumeControllerHide();
   });
 
-  $("#volume-medium").click(function () {
+  $("#volume-medium").on("click", function () {
     sounds.setVolumeMedium();
     frontEnd.volumeControllerHide();
   });
 
-  $("#volume-high").click(function () {
+  $("#volume-high").on("click", function () {
     sounds.setVolumeHigh();
     frontEnd.volumeControllerHide();
   });
 
-  //end of test/ change and or remove above
-  // fightToMoves();
-  $("#header-image").on("click", function () { createBattleObject(playerPokemon, opposingPokemon); });
-  $("#fight").on("click", function () { console.log("fight!"); });
-  $("#run").on("click", function () { console.log("run!"); });
-  $("#pokemon").on("click", function () { console.log("party!"); });
-  $("#items").on("click", function () { console.log("items!"); });
+  $("#fight").on("click", function () {
+    frontEnd.hideBattleOptions();
+    frontEnd.showMoveOptions();
+  });
+
+  $("#run").on("click", function () {
+    frontEnd.battleHide();
+    frontEnd.startShow();
+    sounds.stopMainSongs();
+    sounds.startSongIntro();
+  });
 
   // Handle move selection
   $("#move-1").on("click", function () {

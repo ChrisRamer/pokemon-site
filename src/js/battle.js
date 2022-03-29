@@ -29,8 +29,6 @@ export default class Battle {
 		victim.currentStats.hp -= turnResult.damage;
 		turnResult.didFaint = (victim.currentStats.hp <= 0);
 
-		console.log(turnResult.summary);
-
 		// If victim HP is 0, faint
 		if (turnResult.didFaint) {
 			this.handleFaint(victim);
@@ -44,7 +42,7 @@ export default class Battle {
 		if (power <= 0) return 0;
 		const attack = attacker.currentStats.attack;
 		const defense = victim.currentStats.defense;
-		return Math.floor((((((2 * attacker.level) / 5) + 2) * power * (attack / defense)) / 50) + 2);
+		return Math.floor((((((2 * attacker.level) / 5) + 2) * power * (attack / defense)) / 50) + 2 + (Math.random() * 2));
 	}
 
 	handleFaint(victim) {

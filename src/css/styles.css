@@ -59,9 +59,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  }
+}
 
-  #enemy-name-change{
+#enemy-name-change{
   grid-row-start: 1;
   grid-column-start: 2;
   grid-column-end: 6;
@@ -102,22 +102,6 @@ body {
   outline-style: solid;
 }
 
-/* #game-ui-battle {
-  grid-row-start: 2;
-  margin: 1em auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(90, 84, 84);
-  width: 700px;
-  height: 500px;
-  border: 10px rgb(255, 87, 75);
-  border-radius: 5px;
-  border-style: solid;
-  outline: 10px black;
-  outline-style: solid;
-} */
-
 #main-battle{
   display: none;
 }
@@ -126,46 +110,13 @@ body {
   display: none;
 }
 
-
-/* #game-ui-start {
-  grid-row-start: 2;
-  margin: 1em auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(90, 84, 84);
-  width: 700px;
-  height: 500px;
-  border: 10px rgb(255, 87, 75);
-  border-radius: 5px;
-  border-style: solid;
-  outline: 10px black;
-  outline-style: solid;
-} */
-
-/* #game-ui-loading {
-  grid-row-start: 2;
-  margin: 1em auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(90, 84, 84);
-  width: 700px;
-  height: 500px;
-  border: 10px rgb(255, 87, 75);
-  border-radius: 5px;
-  border-style: solid;
-  outline: 10px black;
-  outline-style: solid;
-} */
-
 .grow {
   transition: all .1s;
-  }
+}
 
-  .grow:hover {
+.grow:hover {
   transform: scale(1.3);
-  }
+}
 
 #header-image {
   max-width: 800px;
@@ -229,12 +180,12 @@ body {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    background-color: white;
-    width: 200px;
-    height: 90px;
-    border: 3px black;
-    border-style: solid;
-    border-radius: 6px;
+  background-color: white;
+  width: 200px;
+  height: 90px;
+  border: 3px black;
+  border-style: solid;
+  border-radius: 6px;
 }
 
 #hp-bar-placement-2 {
@@ -293,6 +244,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#loading-text{
+  animation: animate 1.5s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 #lower-screen {

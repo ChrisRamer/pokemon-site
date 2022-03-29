@@ -51,17 +51,17 @@ export default class GameSounds {
     this.hurryIntro.onended = () => {
       this.hurryLoop.play();
       this.hurryLoop.loop = true;
-    }
+    };
     this.hurryLoop.onended = () => {
       this.hurryEnd.play();
-    }
+    };
     this.battleIntro.onended = () => {
       this.battleLoop.play();
       this.battleLoop.loop = true;
-    }
+    };
     this.battleLoop.onended = () => {
       this.battleEnd.play();
-    }
+    };
   }
 
   playBlip() {
@@ -69,30 +69,6 @@ export default class GameSounds {
   }
 
   setVolume() {
-    this.attack1.volume = 0.02;
-    this.attack2.volume = 0.02;
-    this.attack3.volume = 0.02;
-    this.attack4.volume = 0.02;
-    this.attack5.volume = 0.02;
-    this.attack6.volume = 0.02;
-    this.attack7.volume = 0.02;
-    this.attack8.volume = 0.02;
-    this.blip.volume = 0.02;
-    this.battleIntro.volume = 0.02;
-    this.battleLoop.volume = 0.02;
-    this.battleEnd.volume = 0.02;
-    this.hurryIntro.volume = 0.02;
-    this.hurryEnd.volume = 0.02;
-    this.hurryLoop.volume = 0.02;
-    this.save.volume = 0.02;
-    this.victory.volume = 0.02;
-    this.trainer.volume = 0.02;
-    this.loss.volume = 0.02;
-    this.coin.volume = 0.02;
-    this.grow.volume = 0.02;
-  }
-
-  setVolumeMedium() {
     this.attack1.volume = 0.04;
     this.attack2.volume = 0.04;
     this.attack3.volume = 0.04;
@@ -116,28 +92,52 @@ export default class GameSounds {
     this.grow.volume = 0.04;
   }
 
+  setVolumeMedium() {
+    this.attack1.volume = 0.07;
+    this.attack2.volume = 0.07;
+    this.attack3.volume = 0.07;
+    this.attack4.volume = 0.07;
+    this.attack5.volume = 0.07;
+    this.attack6.volume = 0.07;
+    this.attack7.volume = 0.07;
+    this.attack8.volume = 0.07;
+    this.blip.volume = 0.07;
+    this.battleIntro.volume = 0.07;
+    this.battleLoop.volume = 0.07;
+    this.battleEnd.volume = 0.07;
+    this.hurryIntro.volume = 0.07;
+    this.hurryEnd.volume = 0.07;
+    this.hurryLoop.volume = 0.07;
+    this.save.volume = 0.07;
+    this.victory.volume = 0.07;
+    this.trainer.volume = 0.07;
+    this.loss.volume = 0.07;
+    this.coin.volume = 0.07;
+    this.grow.volume = 0.07;
+  }
+
   setVolumeHigh() {
-    this.attack1.volume = 0.06;
-    this.attack2.volume = 0.06;
-    this.attack3.volume = 0.06;
-    this.attack4.volume = 0.06;
-    this.attack5.volume = 0.06;
-    this.attack6.volume = 0.06;
-    this.attack7.volume = 0.06;
-    this.attack8.volume = 0.06;
-    this.blip.volume = 0.06;
-    this.battleIntro.volume = 0.06;
-    this.battleLoop.volume = 0.06;
-    this.battleEnd.volume = 0.06;
-    this.hurryIntro.volume = 0.06;
-    this.hurryEnd.volume = 0.06;
-    this.hurryLoop.volume = 0.06;
-    this.save.volume = 0.06;
-    this.victory.volume = 0.06;
-    this.trainer.volume = 0.06;
-    this.loss.volume = 0.06;
-    this.coin.volume = 0.06;
-    this.grow.volume = 0.06;
+    this.attack1.volume = 0.09;
+    this.attack2.volume = 0.09;
+    this.attack3.volume = 0.09;
+    this.attack4.volume = 0.09;
+    this.attack5.volume = 0.09;
+    this.attack6.volume = 0.09;
+    this.attack7.volume = 0.09;
+    this.attack8.volume = 0.09;
+    this.blip.volume = 0.09;
+    this.battleIntro.volume = 0.09;
+    this.battleLoop.volume = 0.09;
+    this.battleEnd.volume = 0.09;
+    this.hurryIntro.volume = 0.09;
+    this.hurryEnd.volume = 0.09;
+    this.hurryLoop.volume = 0.09;
+    this.save.volume = 0.09;
+    this.victory.volume = 0.09;
+    this.trainer.volume = 0.09;
+    this.loss.volume = 0.09;
+    this.coin.volume = 0.09;
+    this.grow.volume = 0.09;
   }
 
   mute() {
@@ -192,19 +192,19 @@ export default class GameSounds {
     let randomNumber = Math.floor(Math.random() * 8) + 1;
     if (randomNumber == 1) {
       this.attack1.play();
-    } if (randomNumber == 2) {
+    }else if (randomNumber == 2) {
       this.attack2.play();
-    } if (randomNumber == 3) {
+    }else if (randomNumber == 3) {
       this.attack3.play();
-    } if (randomNumber == 4) {
+    }else if (randomNumber == 4) {
       this.attack4.play();
-    } if (randomNumber == 5) {
+    }else if (randomNumber == 5) {
       this.attack5.play();
-    } if (randomNumber == 6) {
+    }else if (randomNumber == 6) {
       this.attack6.play();
-    } if (randomNumber == 7) {
+    }else if (randomNumber == 7) {
       this.attack7.play();
-    } if (randomNumber == 8) {
+    }else if (randomNumber == 8) {
       this.attack8.play();
     }
   }
@@ -222,6 +222,24 @@ export default class GameSounds {
 
   endBattleSong() {
     this.battleLoop.loop = false;
+  }
+
+  stopMainSongs() {
+    this.hurryLoop.pause();
+    this.hurryIntro.pause();
+    this.battleIntro.pause();
+    this.battleLoop.pause();
+    this.hurryEnd.pause();
+    this.battleEnd.pause();
+  }
+
+  resetSongTime() {
+    this.hurryLoop.currentTime = 0;
+    this.hurryIntro.currentTime = 0;
+    this.battleIntro.currentTime = 0;
+    this.battleLoop.currentTime = 0;
+    this.hurryEnd.currentTime = 0;
+    this.battleEnd.currentTime = 0;
   }
 
 }

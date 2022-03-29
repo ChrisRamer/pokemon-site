@@ -76,23 +76,33 @@ export default class FrontEndFunctions {
     $("#enemy-name-change").text(enemyPokemon.name);
     $("#player-name-change").text(playerPokemon.name);
     $("#api-move-1").text(playerPokemon.moves[0].name);
+    $("#api-move-1").attr("title", playerPokemon.moves[0].flavorText);
     $("#api-move-2").text(playerPokemon.moves[1].name);
+    $("#api-move-2").attr("title", playerPokemon.moves[1].flavorText);
     $("#api-move-3").text(playerPokemon.moves[2].name);
+    $("#api-move-3").attr("title", playerPokemon.moves[2].flavorText);
     $("#api-move-4").text(playerPokemon.moves[3].name);
+    $("#api-move-4").attr("title", playerPokemon.moves[3].flavorText);
   }
 
   updateTurnSummary(newMessage) {
     $("#battle-text-control").text(newMessage);
   }
 
+	showMoveOptions() {
+		$("#move-options").css("visibility", "visible");
+	}
+
+	hideMoveOptions() {
+		$("#move-options").css("visibility", "hidden");
+	}
+
   showBattleOptions() {
     $("#battle-option-box").css("visibility", "visible");
-    $("#move-options").css("visibility", "visible");
   }
 
   hideBattleOptions() {
     $("#battle-option-box").css("visibility", "hidden");
-    $("#move-options").css("visibility", "hidden");
   }
 
   volumeControllerShow() {
@@ -134,5 +144,18 @@ export default class FrontEndFunctions {
   loadShow() {
     $('#main-load').show();
   }
+
+	fadeFaintedPokemon(player) {
+		if (player) {
+			$("#sprite-2").children("img").eq(0).fadeOut(3000);
+		} else {
+			$("#sprite-1").children("img").eq(0).fadeOut(3000);
+		}
+	}
+
+	fadeInPokemon() {
+		$("#sprite-1").children("img").eq(0).fadeIn();
+		$("#sprite-2").children("img").eq(0).fadeIn();
+	}
 
 }
